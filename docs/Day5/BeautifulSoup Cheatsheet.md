@@ -1,259 +1,259 @@
-BeautifulSoup Cheatsheet
-BeautifulSoup is a Python library for parsing HTML and XML documents. It creates a parse tree for parsed pages that can be used to extract data from HTML, which is useful for web scraping.
+Hoja de Referencia de BeautifulSoup
+BeautifulSoup es una biblioteca de Python para analizar documentos HTML y XML. Crea un árbol de análisis para las páginas analizadas que se puede utilizar para extraer datos de HTML, lo cual es útil para el web scraping.
 
-1. Installation
-If you don't have BeautifulSoup installed, you can install it using pip:
+1. Instalación
+Si no tienes instalado BeautifulSoup, puedes instalarlo usando pip:
 
 pip install beautifulsoup4
-pip install lxml # Optional, but recommended for faster parsing
+pip install lxml # Opcional, pero recomendado para un análisis más rápido
 
-2. Basic Parsing
-To get started, you need to import BeautifulSoup and provide it with the HTML/XML content.
+2. Análisis Básico
+Para empezar, necesitas importar BeautifulSoup y proporcionarle el contenido HTML/XML.
 
 from bs4 import BeautifulSoup
 
-# Sample HTML content
+# Contenido HTML de muestra
 html_doc = """
-<html><head><title>My Document</title></head>
+<html><head><title>Mi Documento</title></head>
 <body>
-    <p class="title"><b>The Document Title</b></p>
+    <p class="title"><b>El Título del Documento</b></p>
 
-    <a href="http://example.com/one" class="external-link" id="link1">Link One</a>
-    <a href="http://example.com/two" class="external-link" id="link2">Link Two</a>
-    <p>This is some other content.</p>
+    <a href="http://example.com/one" class="external-link" id="link1">Enlace Uno</a>
+    <a href="http://example.com/two" class="external-link" id="link2">Enlace Dos</a>
+    <p>Este es otro contenido.</p>
     <div class="container">
         <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
         </ul>
     </div>
 </body>
 </html>
 """
 
-# Create a BeautifulSoup object
-# 'lxml' is a common and fast parser; 'html.parser' is built-in
+# Crear un objeto BeautifulSoup
+# 'lxml' es un analizador común y rápido; 'html.parser' está incorporado
 soup = BeautifulSoup(html_doc, 'lxml')
 
-# Pretty-print the parsed HTML
+# Imprimir el HTML analizado con formato
 print(soup.prettify())
 
-3. Navigating the Parse Tree
-BeautifulSoup allows you to navigate the parsed document using object-oriented access.
+3. Navegando por el Árbol de Análisis
+BeautifulSoup te permite navegar por el documento analizado utilizando el acceso orientado a objetos.
 
-Accessing Tags
-You can access tags directly as attributes of the BeautifulSoup object or other tags.
+Accediendo a las Etiquetas
+Puedes acceder a las etiquetas directamente como atributos del objeto BeautifulSoup u otras etiquetas.
 
-# Get the first <head> tag
+# Obtener la primera etiqueta <head>
 head_tag = soup.head
-print(f"Head Tag: {head_tag}")
+print(f"Etiqueta Head: {head_tag}")
 
-# Get the first <title> tag within <head>
+# Obtener la primera etiqueta <title> dentro de <head>
 title_tag = soup.title
-print(f"Title Tag: {title_tag}")
+print(f"Etiqueta Title: {title_tag}")
 
-# Get the tag's name
-print(f"Title Tag Name: {title_tag.name}")
+# Obtener el nombre de la etiqueta
+print(f"Nombre de la Etiqueta Title: {title_tag.name}")
 
-# Get the string content of the tag
-print(f"Title Tag Content: {title_tag.string}")
+# Obtener el contenido de la cadena de la etiqueta
+print(f"Contenido de la Etiqueta Title: {title_tag.string}")
 
-# Accessing attributes of a tag
+# Accediendo a los atributos de una etiqueta
 link_one = soup.a
-print(f"Link One href: {link_one['href']}")
-print(f"Link One class: {link_one['class']}")
+print(f"Href del Enlace Uno: {link_one['href']}")
+print(f"Clase del Enlace Uno: {link_one['class']}")
 
-# Get all attributes as a dictionary
-print(f"Link One attributes: {link_one.attrs}")
+# Obtener todos los atributos como un diccionario
+print(f"Atributos del Enlace Uno: {link_one.attrs}")
 
-Navigating Down
-.contents: A list of the tag's direct children.
+Navegando hacia Abajo
+.contents: Una lista de los hijos directos de la etiqueta.
 
-.children: An iterator of the tag's direct children.
+.children: Un iterador de los hijos directos de la etiqueta.
 
-.descendants: An iterator of all children, grandchildren, etc.
+.descendants: Un iterador de todos los hijos, nietos, etc.
 
 body_tag = soup.body
-print("\nBody Tag Contents:")
+print("\nContenidos de la Etiqueta Body:")
 for child in body_tag.contents:
-    if child.name: # Only print actual tags
+    if child.name: # Solo imprimir etiquetas reales
         print(child.name)
 
-print("\nBody Tag Descendants (Examples):")
+print("\nDescendientes de la Etiqueta Body (Ejemplos):")
 for descendant in body_tag.descendants:
     if descendant.name:
         print(descendant.name, end=" ")
-        if descendant.name == 'li': break # Stop after a few examples
+        if descendant.name == 'li': break # Detenerse después de algunos ejemplos
 
-Navigating Up
-.parent: The direct parent of a tag.
+Navegando hacia Arriba
+.parent: El padre directo de una etiqueta.
 
-.parents: An iterator of all ancestors.
+.parents: Un iterador de todos los antepasados.
 
-# Find the parent of the title tag
+# Encontrar el padre de la etiqueta de título
 p_tag = soup.p
-print(f"\nParent of <p>: {p_tag.parent.name}")
+print(f"\nPadre de <p>: {p_tag.parent.name}")
 
-# Iterate through parents of a specific link
+# Iterar a través de los padres de un enlace específico
 link2 = soup.find(id="link2")
-print(f"Parents of <a id='link2'>:")
+print(f"Padres de <a id='link2'>:")
 for parent in link2.parents:
     if parent is None:
         continue
     if parent.name:
         print(parent.name)
 
-Navigating Sideways
-.next_sibling: The next sibling after the current tag.
+Navegando Lateralmente
+.next_sibling: El siguiente hermano después de la etiqueta actual.
 
-.previous_sibling: The previous sibling before the current tag.
+.previous_sibling: El hermano anterior antes de la etiqueta actual.
 
-.next_siblings: An iterator of all following siblings.
+.next_siblings: Un iterador de todos los hermanos siguientes.
 
-.previous_siblings: An iterator of all preceding siblings.
+.previous_siblings: Un iterador de todos los hermanos precedentes.
 
 first_p_tag = soup.p
-print(f"\nNext sibling of first <p>: {first_p_tag.next_sibling.next_sibling.name}") # Skip newline
-print(f"Previous sibling of first <p>: {first_p_tag.previous_sibling.previous_sibling.name}") # Skip newline
+print(f"\nSiguiente hermano del primer <p>: {first_p_tag.next_sibling.next_sibling.name}") # Omitir nueva línea
+print(f"Hermano anterior del primer <p>: {first_p_tag.previous_sibling.previous_sibling.name}") # Omitir nueva línea
 
-print("\nNext siblings of first <p> (examples):")
+print("\nSiguientes hermanos del primer <p> (ejemplos):")
 for sibling in first_p_tag.next_siblings:
     if sibling.name:
         print(sibling.name)
 
-4. Searching the Tree (find() and find_all())
-These are the most powerful methods for locating specific elements.
+4. Buscando en el Árbol (find() y find_all())
+Estos son los métodos más potentes para localizar elementos específicos.
 
 find_all(name, attrs, recursive, string, limit)
-Finds all occurrences of a tag that match the criteria. Returns a list of tags.
+Encuentra todas las ocurrencias de una etiqueta que coincidan con los criterios. Devuelve una lista de etiquetas.
 
-name: Tag name (e.g., 'a', 'p'). Can be a string, list, regular expression, or function.
+name: Nombre de la etiqueta (p. ej., 'a', 'p'). Puede ser una cadena, lista, expresión regular o función.
 
-attrs: A dictionary of attribute values (e.g., {'class': 'external-link'}).
+attrs: Un diccionario de valores de atributos (p. ej., {'class': 'external-link'}).
 
-recursive: If False, only examines direct children. Default is True.
+recursive: Si es False, solo examina los hijos directos. El valor predeterminado es True.
 
-string: Searches for strings instead of tags.
+string: Busca cadenas en lugar de etiquetas.
 
-limit: Stop searching after a certain number of matches.
+limit: Detiene la búsqueda después de un cierto número de coincidencias.
 
-# Find all <a> tags
+# Encontrar todas las etiquetas <a>
 all_links = soup.find_all('a')
-print(f"\nAll links: {all_links}")
+print(f"\nTodos los enlaces: {all_links}")
 
-# Find all <p> tags with class 'title'
-title_p = soup.find_all('p', class_='title') # 'class_' because 'class' is a Python keyword
-print(f"Paragraphs with class 'title': {title_p}")
+# Encontrar todas las etiquetas <p> con la clase 'title'
+title_p = soup.find_all('p', class_='title') # 'class_' porque 'class' es una palabra clave de Python
+print(f"Párrafos con la clase 'title': {title_p}")
 
-# Find all tags that have an 'id' attribute
+# Encontrar todas las etiquetas que tienen un atributo 'id'
 tags_with_id = soup.find_all(id=True)
-print(f"Tags with an 'id' attribute: {tags_with_id}")
+print(f"Etiquetas con un atributo 'id': {tags_with_id}")
 
-# Find all <li> tags
+# Encontrar todas las etiquetas <li>
 list_items = soup.find_all('li')
 for item in list_items:
-    print(f"List Item: {item.string}")
+    print(f"Elemento de Lista: {item.string}")
 
-# Find tags containing specific text (using 'string')
-p_with_content = soup.find_all(string="This is some other content.")
-print(f"Tags with specific string content: {p_with_content}")
+# Encontrar etiquetas que contienen texto específico (usando 'string')
+p_with_content = soup.find_all(string="Este es otro contenido.")
+print(f"Etiquetas con contenido de cadena específico: {p_with_content}")
 
 find(name, attrs, recursive, string)
-Similar to find_all(), but returns only the first match.
+Similar a find_all(), pero devuelve solo la primera coincidencia.
 
-# Find the first <a> tag
+# Encontrar la primera etiqueta <a>
 first_link = soup.find('a')
-print(f"\nFirst link found: {first_link}")
+print(f"\nPrimer enlace encontrado: {first_link}")
 
-# Find the first <p> tag with class 'title'
+# Encontrar el primer párrafo <p> con la clase 'title'
 first_title_p = soup.find('p', class_='title')
-print(f"First paragraph with class 'title': {first_title_p}")
+print(f"Primer párrafo con la clase 'title': {first_title_p}")
 
-Common Search Patterns
-# By tag name
-print(f"\nFind all 'p' tags: {soup.find_all('p')}")
+Patrones de Búsqueda Comunes
+# Por nombre de etiqueta
+print(f"\nEncontrar todas las etiquetas 'p': {soup.find_all('p')}")
 
-# By CSS class (note the underscore!)
-print(f"Find all 'a' tags with class 'external-link': {soup.find_all('a', class_='external-link')}")
+# Por clase CSS (¡nota el guion bajo!)
+print(f"Encontrar todas las etiquetas 'a' con la clase 'external-link': {soup.find_all('a', class_='external-link')}")
 
-# By ID
-print(f"Find tag with id 'link1': {soup.find(id='link1')}")
+# Por ID
+print(f"Encontrar etiqueta con id 'link1': {soup.find(id='link1')}")
 
-# By attribute value (any attribute)
-print(f"Find all tags with href='http://example.com/one': {soup.find_all(href='http://example.com/one')}")
+# Por valor de atributo (cualquier atributo)
+print(f"Encontrar todas las etiquetas con href='http://example.com/one': {soup.find_all(href='http://example.com/one')}")
 
-# Using a list of tag names
-print(f"Find all 'p' or 'a' tags: {soup.find_all(['p', 'a'])}")
+# Usando una lista de nombres de etiquetas
+print(f"Encontrar todas las etiquetas 'p' o 'a': {soup.find_all(['p', 'a'])}")
 
-# Using regular expressions
+# Usando expresiones regulares
 import re
-print(f"Find all tags whose name starts with 'b': {soup.find_all(re.compile("^b"))}") # e.g., <body>, <b>
-print(f"Find all tags with 'link' in their ID: {soup.find_all(id=re.compile("link"))}")
+print(f"Encontrar todas las etiquetas cuyo nombre comienza con 'b': {soup.find_all(re.compile('^b'))}") # p. ej., <body>, <b>
+print(f"Encontrar todas las etiquetas con 'link' en su ID: {soup.find_all(id=re.compile('link'))}")
 
-5. Modifying the Tree
-BeautifulSoup allows you to modify the parse tree.
+5. Modificando el Árbol
+BeautifulSoup te permite modificar el árbol de análisis.
 
-# Sample HTML for modification
+# HTML de muestra para modificación
 html_mod = """
 <html>
 <body>
-    <p>Original text.</p>
-    <div id="target">Content here</div>
+    <p>Texto original.</p>
+    <div id="target">Contenido aquí</div>
 </body>
 </html>
 """
 soup_mod = BeautifulSoup(html_mod, 'lxml')
 
-# Change tag name
+# Cambiar el nombre de la etiqueta
 p_tag_mod = soup_mod.p
 p_tag_mod.name = "div"
-print(f"\nAfter changing p to div: {soup_mod.prettify()}")
+print(f"\nDespués de cambiar p a div: {soup_mod.prettify()}")
 
-# Modify tag attributes
+# Modificar los atributos de la etiqueta
 div_tag_mod = soup_mod.find(id="target")
 div_tag_mod['class'] = 'new-class'
 div_tag_mod['data-type'] = 'example'
-print(f"After modifying attributes: {soup_mod.prettify()}")
+print(f"Después de modificar los atributos: {soup_mod.prettify()}")
 
-# Add new content
+# Añadir nuevo contenido
 new_tag = soup_mod.new_tag("span")
-new_tag.string = "Added span text."
-div_tag_mod.append(new_tag) # Add inside the div
-print(f"After appending a new tag: {soup_mod.prettify()}")
+new_tag.string = "Texto de span añadido."
+div_tag_mod.append(new_tag) # Añadir dentro del div
+print(f"Después de añadir una nueva etiqueta: {soup_mod.prettify()}")
 
-# Replace content
-div_tag_mod.string = "New replaced content."
-print(f"After replacing div content: {soup_mod.prettify()}")
+# Reemplazar contenido
+div_tag_mod.string = "Nuevo contenido reemplazado."
+print(f"Después de reemplazar el contenido del div: {soup_mod.prettify()}")
 
-# Remove content
+# Eliminar contenido
 span_to_remove = soup_mod.find('span')
 if span_to_remove:
-    span_to_remove.decompose() # Removes the tag and its contents
-print(f"After removing span: {soup_mod.prettify()}")
+    span_to_remove.decompose() # Elimina la etiqueta y su contenido
+print(f"Después de eliminar el span: {soup_mod.prettify()}")
 
-6. CSS Selectors (select() and select_one())
-BeautifulSoup also supports CSS selectors using the select() method (returns a list) and select_one() (returns the first match).
+6. Selectores CSS (select() y select_one())
+BeautifulSoup también admite selectores CSS utilizando el método select() (devuelve una lista) y select_one() (devuelve la primera coincidencia).
 
-# Select all <p> tags
-print(f"\nSelect all 'p' tags: {soup.select('p')}")
+# Seleccionar todas las etiquetas <p>
+print(f"\nSeleccionar todas las etiquetas 'p': {soup.select('p')}")
 
-# Select tags by class
-print(f"Select all elements with class 'external-link': {soup.select('.external-link')}")
+# Seleccionar etiquetas por clase
+print(f"Seleccionar todos los elementos con la clase 'external-link': {soup.select('.external-link')}")
 
-# Select tag by ID
-print(f"Select element with id 'link2': {soup.select('#link2')}")
+# Seleccionar etiqueta por ID
+print(f"Seleccionar elemento con id 'link2': {soup.select('#link2')}")
 
-# Select direct children
-print(f"Select direct children <li> of .container: {soup.select('div.container > ul > li')}")
+# Seleccionar hijos directos
+print(f"Seleccionar hijos directos <li> de .container: {soup.select('div.container > ul > li')}")
 
-# Select descendants
-print(f"Select all <li> descendants of .container: {soup.select('div.container li')}")
+# Seleccionar descendientes
+print(f"Seleccionar todos los descendientes <li> de .container: {soup.select('div.container li')}")
 
-# Select combined selectors
-print(f"Select 'p' or 'a' tags: {soup.select('p, a')}")
+# Seleccionar selectores combinados
+print(f"Seleccionar etiquetas 'p' o 'a': {soup.select('p, a')}")
 
-# Select tags with specific attribute values
-print(f"Select 'a' tags with href starting with 'http://example.com': {soup.select('a[href^="http://example.com"]')}")
+# Seleccionar etiquetas con valores de atributos específicos
+print(f"Seleccionar etiquetas 'a' con href que comience con 'http://example.com': {soup.select('a[href^=\"http://example.com\"]')}")
 
-# Select the first matching element
-print(f"Select first link: {soup.select_one('a')}")
+# Seleccionar el primer elemento coincidente
+print(f"Seleccionar primer enlace: {soup.select_one('a')}")

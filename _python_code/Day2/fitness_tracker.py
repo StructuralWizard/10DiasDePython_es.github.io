@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from matplotlib.dates import DateFormatter
 
-# ---------- CLASSES ----------
+# ---------- CLASES ----------
 
 class LogEntry:
     def __init__(self, date):
@@ -25,19 +25,19 @@ class Meal(LogEntry):
         self.food = food
         self.calories = calories
 
-# ---------- FILE PATHS ----------
+# ---------- RUTAS DE ARCHIVOS ----------
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 WORKOUTS_FILE = os.path.join(DATA_DIR, 'workouts.csv')
 MEALS_FILE = os.path.join(DATA_DIR, 'meals.csv')
 
-# ---------- READ CSV MANUALLY ----------
+# ---------- LEER CSV MANUALMENTE ----------
 
 def read_workouts_manual(file_path):
     workouts = []
     with open(file_path, newline='') as csvfile:
         reader = csv.reader(csvfile)
-        next(reader)  # Skip header
+        next(reader)  # Omitir encabezado
         for row in reader:
             date = row[0].strip()
             workout_type = row[1].strip()
@@ -46,7 +46,7 @@ def read_workouts_manual(file_path):
             workouts.append(Workout(date, workout_type, duration, calories))
     return workouts
 
-# ---------- USING PANDAS ----------
+# ---------- USANDO PANDAS ----------
 
 def load_and_clean_data():
     df_workouts = pd.read_csv(WORKOUTS_FILE)
@@ -55,14 +55,14 @@ def load_and_clean_data():
     df_workouts['date'] = pd.to_datetime(df_workouts['date'])
     df_meals['date'] = pd.to_datetime(df_meals['date'])
 
-    # Fill any missing values in workout data with zeros (e.g., missing durations or calories)
+    # Rellenar cualquier valor faltante en los datos de entrenamiento con ceros (p. ej., duraciones o calorías faltantes)
     df_workouts.fillna(0, inplace=True)
-    # Fill any missing values in meal data with "Unknown" (e.g., missing food descriptions)
+    # Rellenar cualquier valor faltante en los datos de comidas con "Desconocido" (p. ej., descripciones de alimentos faltantes)
     df_meals.fillna("Unknown", inplace=True)
 
     return df_workouts, df_meals
 
-# ---------- ANALYSIS ----------
+# ---------- ANÁLISIS ----------
 
 def summarize_data(df_workouts, df_meals):
     workout_summary = df_workouts.groupby('date')['calories_burned'].sum().reset_index()
@@ -72,63 +72,63 @@ def summarize_data(df_workouts, df_meals):
     combined['net_calories'] = combined['calories'] - combined['calories_burned']
     return combined
 
-# ---------- VISUALIZATION ----------
+# ---------- VISUALIZACIÓN ----------
 
 def plot_fitness_trends(combined_df):
-    # Create a new figure with specified size (width: 16 inches, height: 10 inches)
-    # This creates a larger plot that is easier to read and analyze
+    # Crear una nueva figura con el tamaño especificado (ancho: 16 pulgadas, alto: 10 pulgadas)
+    # Esto crea un gráfico más grande que es más fácil de leer y analizar
     plt.figure(figsize=(16, 10)) 
     
-    # Plot calories consumed with circular markers
-    plt.plot(combined_df['date'], combined_df['calories'], label="Calories Consumed", marker='o')
+    # Trazar las calorías consumidas con marcadores circulares
+    plt.plot(combined_df['date'], combined_df['calories'], label="Calorías Consumidas", marker='o')
     
-    # Plot calories burned with x markers for visual distinction
-    plt.plot(combined_df['date'], combined_df['calories_burned'], label="Calories Burned", marker='x')
+    # Trazar las calorías quemadas con marcadores x para una distinción visual
+    plt.plot(combined_df['date'], combined_df['calories_burned'], label="Calorías Quemadas", marker='x')
     
-    # Plot net calories (consumed - burned) with dashed line style
-    # This shows the caloric balance for each day
-    plt.plot(combined_df['date'], combined_df['net_calories'], label="Net Calories", linestyle='--')
+    # Trazar las calorías netas (consumidas - quemadas) con un estilo de línea discontinua
+    # Esto muestra el balance calórico de cada día
+    plt.plot(combined_df['date'], combined_df['net_calories'], label="Calorías Netas", linestyle='--')
 
-    # Calculate and plot a 2-day rolling average of net calories
-    # This smooths out daily fluctuations and shows the overall trend
+    # Calcular y trazar una media móvil de 2 días de las calorías netas
+    # Esto suaviza las fluctuaciones diarias y muestra la tendencia general
     rolling = combined_df['net_calories'].rolling(window=2).mean()
-    plt.plot(combined_df['date'], rolling, label="Rolling Mean (Net)", linestyle='dotted')
+    plt.plot(combined_df['date'], rolling, label="Media Móvil (Neta)", linestyle='dotted')
 
-    # Add axis labels with increased font size for better readability
-    plt.xlabel('Date', fontsize=14)
-    plt.ylabel('Calories', fontsize=14)
+    # Añadir etiquetas de eje con un tamaño de fuente aumentado para una mejor legibilidad
+    plt.xlabel('Fecha', fontsize=14)
+    plt.ylabel('Calorías', fontsize=14)
     
-    # Format the x-axis to display dates in YYYY-MM-DD format
-    # This ensures consistent date representation on the chart
+    # Formatear el eje x para mostrar las fechas en formato AAAA-MM-DD
+    # Esto asegura una representación de fecha consistente en el gráfico
     date_format = DateFormatter('%Y-%m-%d')
     plt.gca().xaxis.set_major_formatter(date_format)
     
-    # Rotate x-axis labels by 45 degrees to prevent overlap and increase font size
+    # Rotar las etiquetas del eje x 45 grados para evitar la superposición y aumentar el tamaño de la fuente
     plt.xticks(rotation=45, fontsize=12)
     plt.yticks(fontsize=12)
     
-    plt.title('Fitness Tracker Summary', fontsize=16) # Add a descriptive title to the chart with larger font
+    plt.title('Resumen del Seguimiento de Fitness', fontsize=16) # Añadir un título descriptivo al gráfico con una fuente más grande
     
-    plt.legend() # Add a legend to identify each line in the plot
+    plt.legend() # Añadir una leyenda para identificar cada línea en el gráfico
     
-    plt.grid(True) # Add a grid to make it easier to read values from the chart
+    plt.grid(True) # Añadir una cuadrícula para facilitar la lectura de los valores del gráfico
     
-    plt.tight_layout() # Adjust layout to ensure all elements fit without overlapping
+    plt.tight_layout() # Ajustar el diseño para asegurar que todos los elementos encajen sin superponerse
     
-    plt.show() # Display the completed chart
+    plt.show() # Mostrar el gráfico completado
 
 
-# ---------- MAIN FUNCTION ----------
+# ---------- FUNCIÓN PRINCIPAL ----------
 
 def main():
-    print("Loading data...")
+    print("Cargando datos...")
     df_workouts, df_meals = load_and_clean_data()
 
-    print("\nSummarizing data...")
+    print("\nResumiendo datos...")
     combined = summarize_data(df_workouts, df_meals)
     print(combined)
 
-    print("\nPlotting results...")
+    print("\nTrazando resultados...")
     plot_fitness_trends(combined)
 
 if __name__ == "__main__":

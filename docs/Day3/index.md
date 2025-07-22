@@ -1,20 +1,20 @@
 ---
-title: Day 3 Python Advance - API
+title: Día 3 Python Avanzado - API
 layout: default
 nav_order: 4
 has_children: false
 nav_exclude: false
 ---
 
-# Day 3. Python Advance. 🌐 Hack your Stocks, Flights and Habits
+# Día 3. Python Avanzado. 🌐 Hackea tus Acciones, Vuelos y Hábitos
 {: .no_toc }
-🚀 In this lesson, you’ll unlock the power of APIs, automation, and data tracking to master real-world Python skills. From monitoring markets to finding flight deals and optimizing your routines—prepare to code smarter and live better. 🌐💡
+🚀 En esta lección, desbloquearás el poder de las APIs, la automatización y el seguimiento de datos para dominar habilidades de Python del mundo real. Desde monitorear mercados hasta encontrar ofertas de vuelos y optimizar tus rutinas, prepárate para programar de manera más inteligente y vivir mejor. 🌐💡
 
 ---
 
 <details open markdown="block">
 <summary>
-Table of contents
+Índice de contenidos
 </summary>
 {: .text-delta }
 1. TOC
@@ -23,51 +23,51 @@ Table of contents
 
 ---
 
-## 📚 Concepts Covered<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 📚 Conceptos Cubiertos<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-What is an API?
-- **API (Application Programming Interface)** is a set of rules that allows different software entities (like your Python script and a webapp) to communicate.
-- **Client**: The application that sends requests (e.g., your Python script).
-- **Server**: The application that responds to requests (e.g., the API endpoint).
+¿Qué es una API?
+- **API (Interfaz de Programación de Aplicaciones)** es un conjunto de reglas que permite que diferentes entidades de software (como tu script de Python y una aplicación web) se comuniquen.
+- **Cliente**: La aplicación que envía solicitudes (p. ej., tu script de Python).
+- **Servidor**: La aplicación que responde a las solicitudes (p. ej., el punto final de la API).
 
-How to use APIs?
-The typical HTTP requests that clients send to servers are:
-- **GET** – Retrieve data
-- **POST** – Submit new data
-- **PUT** – Update existing data
-- **DELETE** – Remove data
+¿Cómo usar las APIs?
+Las típicas solicitudes HTTP que los clientes envían a los servidores son:
+- **GET** – Recuperar datos
+- **POST** – Enviar nuevos datos
+- **PUT** – Actualizar datos existentes
+- **DELETE** – Eliminar datos
 
-When the client sends requests to the server they also go with headers and payload. Headers are key-value pairs sent between the client and the server to provide information about the request or the response. Headers can include things like Authentication tokens (Authorization), Content type (Content-Type) or API keys
+Cuando el cliente envía solicitudes al servidor, también van con encabezados y carga útil. Los encabezados son pares clave-valor enviados entre el cliente y el servidor para proporcionar información sobre la solicitud o la respuesta. Los encabezados pueden incluir cosas como tokens de autenticación (Autorización), tipo de contenido (Content-Type) o claves de API.
 
-For example: 
+Por ejemplo:
 
 ```python
 import requests
 
-# GitHub API endpoint to get user repositories
+# Punto final de la API de GitHub para obtener repositorios de usuario
 url = "https://api.github.com/users/octocat/repos"
 
-# Custom headers
+# Encabezados personalizados
 headers = {
     "User-Agent": "MyPythonApp/1.0",
     "Accept": "application/vnd.github.v3+json"
 }
 
-# Make the GET request
+# Realizar la solicitud GET
 response = requests.get(url, headers=headers)
 
-# Check if request was successful
+# Comprobar si la solicitud fue exitosa
 if response.status_code == 200:
     data = response.json()
-    # Print first 3 repositories with name and URL
+    # Imprimir los 3 primeros repositorios con nombre y URL
     for repo in data[:3]:
-        print(f"Name: {repo['name']} - URL: {repo['html_url']}")
+        print(f"Nombre: {repo['name']} - URL: {repo['html_url']}")
 else:
-    print("Request failed with status code:", response.status_code)
+    print("La solicitud falló con el código de estado:", response.status_code)
 ```
 
-### HTTP Responses - Status Codes<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-HTTP responses are categorized by status codes, which are 3-digit numbers grouped into five classes:
+### Respuestas HTTP - Códigos de Estado<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Las respuestas HTTP se clasifican por códigos de estado, que son números de 3 dígitos agrupados en cinco clases:
 
 <details markdown="block">
   <summary>
@@ -75,130 +75,130 @@ HTTP responses are categorized by status codes, which are 3-digit numbers groupe
   </summary>
 
 {: .important-title }
-> HTTP Responses
+> Respuestas HTTP
 > 
-> 1. **Informational** responses (1xx): These indicate that the request was received and understood, and the process is continuing. 
-> - 100 Continue: The client should continue with its request.
-> - 101 Switching Protocols: The server is changing protocols.
-> 1. **Successful** responses (2xx): These indicate that the request was successfully received, understood, and accepted.
-> - 200 OK: The standard successful response.
-> - 201 Created: The request has been fulfilled and resulted in a new resource being created.
-> - 204 No Content: The server successfully processed the request, but is not returning any content.
-> 1. **Redirection** messages (3xx): These indicate that further action needs to be taken by the client to complete the request, usually by redirecting to a different URL.
-> - 301 Moved Permanently: The requested resource has been permanently moved to a new URL.
-> - 302 Found: The resource is temporarily located at a different URL.
-> - 303 See Other: The response to the request can be found under another URI using a GET method.
-> 1. **Client error** responses (4xx): These indicate that the client's request contained bad syntax or could not be fulfilled.
-> - 400 Bad Request: The server cannot understand the request due to malformed syntax.
-> - 401 Unauthorized: The client must authenticate itself to get the requested response.
-> - 403 Forbidden: The client does not have access rights to the content.
-> - 404 Not Found: The server cannot find the requested resource.
-> - 405 Method Not Allowed: The request method is known by the server but has been disabled and cannot be used for the requested resource.
-> 1. **Server error** responses (5xx): These indicate that the server failed to fulfill an apparently valid request.
-> - 500 Internal Server Error: A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.
-> - 502 Bad Gateway: The server, while acting as a gateway or proxy, received an invalid response from an upstream server.
-> - 503 Service Unavailable: The server is not ready to handle the request, often due to maintenance or being overloaded.
+> 1. Respuestas **informativas** (1xx): Indican que la solicitud fue recibida y entendida, y el proceso continúa.
+> - 100 Continue: El cliente debe continuar con su solicitud.
+> - 101 Switching Protocols: El servidor está cambiando de protocolo.
+> 1. Respuestas **exitosas** (2xx): Indican que la solicitud fue recibida, entendida y aceptada con éxito.
+> - 200 OK: La respuesta exitosa estándar.
+> - 201 Created: La solicitud se ha cumplido y ha resultado en la creación de un nuevo recurso.
+> - 204 No Content: El servidor procesó la solicitud con éxito, pero no devuelve ningún contenido.
+> 1. Mensajes de **redirección** (3xx): Indican que el cliente debe tomar medidas adicionales para completar la solicitud, generalmente redirigiendo a una URL diferente.
+> - 301 Moved Permanently: El recurso solicitado se ha movido permanentemente a una nueva URL.
+> - 302 Found: El recurso se encuentra temporalmente en una URL diferente.
+> - 303 See Other: La respuesta a la solicitud se puede encontrar en otra URI utilizando un método GET.
+> 1. Respuestas de **error del cliente** (4xx): Indican que la solicitud del cliente contenía una sintaxis incorrecta o no pudo ser cumplida.
+> - 400 Bad Request: El servidor no puede entender la solicitud debido a una sintaxis mal formada.
+> - 401 Unauthorized: El cliente debe autenticarse para obtener la respuesta solicitada.
+> - 403 Forbidden: El cliente no tiene derechos de acceso al contenido.
+> - 404 Not Found: El servidor no puede encontrar el recurso solicitado.
+> - 405 Method Not Allowed: El método de solicitud es conocido por el servidor pero ha sido deshabilitado y no se puede usar para el recurso solicitado.
+> 1. Respuestas de **error del servidor** (5xx): Indican que el servidor no pudo cumplir una solicitud aparentemente válida.
+> - 500 Internal Server Error: Un mensaje de error genérico, que se da cuando se encuentra una condición inesperada y no hay un mensaje más específico adecuado.
+> - 502 Bad Gateway: El servidor, mientras actuaba como puerta de enlace o proxy, recibió una respuesta no válida de un servidor ascendente.
+> - 503 Service Unavailable: El servidor no está listo para manejar la solicitud, a menudo debido a mantenimiento o sobrecarga.
 </details>
 
 
-In addition to the status code, an HTTP response also includes:
-1. **Status-line**: Contains the HTTP version, the numeric status code, and a textual reason phrase (e.g., HTTP/1.1 200 OK).
-1. **Headers**: Provide additional information about the response, such as content type, caching instructions, server information, etc.
-1. **Message-body** (optional): Contains the actual data being returned, such as an **HTML** page, **JSON** data, an **image**, etc.
+Además del código de estado, una respuesta HTTP también incluye:
+1. **Línea de estado**: Contiene la versión de HTTP, el código de estado numérico y una frase de motivo textual (p. ej., HTTP/1.1 200 OK).
+1. **Encabezados**: Proporcionan información adicional sobre la respuesta, como el tipo de contenido, instrucciones de almacenamiento en caché, información del servidor, etc.
+1. **Cuerpo del mensaje** (opcional): Contiene los datos reales que se devuelven, como una página **HTML**, datos **JSON**, una **imagen**, etc.
 
 
 <details markdown="block">
   <summary>
-    The `Content-Type` header uses a MIME type (Multipurpose Internet Mail Extensions) to tell the client what kind of data is being sent.
+    El encabezado `Content-Type` utiliza un tipo MIME (Multipurpose Internet Mail Extensions) para decirle al cliente qué tipo de datos se están enviando.
   </summary>
 
 
-Here's a breakdown of other possible message bodies, often categorized by their Content-Type:
+Aquí hay un desglose de otros posibles cuerpos de mensajes, a menudo categorizados por su `Content-Type`:
 
 {: .important-title }
-> Content-type
+> Tipo de contenido
 > 
-> 1. Text-based Formats:
-> - text/plain: Simple, unformatted text. Good for plain messages, logs, or when no specific formatting is needed.
-> - text/css: Cascading Style Sheets, used to style HTML documents.
-> - text/javascript: JavaScript code, often used for client-side scripting in web applications.
-> - text/csv: Comma-Separated Values, a common format for tabular data.
-> - text/xml: XML (Extensible Markup Language), a structured data format. While less common than JSON for new APIs, it's still widely used in older systems and for specific applications (e.g., RSS feeds).
-> 1. Application-specific Formats:
-> - application/xml: Similar to text/xml, but indicates that the content is a generic XML document, not specifically for display as text.
-> - application/json: JavaScript Object Notation, a lightweight data-interchange format. This is extremely common for APIs and data exchange between web services.
-> - application/pdf: Portable Document Format, for documents intended to be viewed or printed in a consistent way.
-> - application/octet-stream: This is a generic binary data type. It's often used when the server doesn't know the specific type of binary data, or when the client is expected to handle the download as a raw file (e.g., a file download where the browser prompts the user to save).
-> - application/zip: Compressed archive files.
-> - application/vnd.*: Vendor-specific MIME types. These are used when a company or organization defines its own unique data format. For example, > - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet for an Excel XLSX file.
-> - application/graphql: For GraphQL queries and responses.
-> - application/wasm: WebAssembly binary format.
-> 3. Image Formats:
-> - image/jpeg: JPEG images.
-> - image/png: PNG images.
-> - image/gif: GIF images.
-> - image/svg+xml: Scalable Vector Graphics, XML-based vector images.
-> - image/webp: WebP images.
-> 4. Audio and Video Formats:
-> - audio/mpeg: MP3 audio.
-> - audio/ogg: Ogg Vorbis audio.
-> - video/mp4: MP4 video.
-> - video/webm: WebM video.
-> - video/ogg: Ogg Theora video.
-> 5. Multipart Messages:
-> - multipart/form-data: While often seen in request bodies for file uploads, it can also appear in response bodies if the server is sending back multiple distinct parts as a single response (less common for standard web Browse, more for specialized APIs).
-> - multipart/mixed: A generic multipart type for sending multiple independent body parts.
+> 1. Formatos basados en texto:
+> - text/plain: Texto simple y sin formato. Bueno para mensajes sencillos, registros o cuando no se necesita un formato específico.
+> - text/css: Hojas de estilo en cascada, utilizadas para dar estilo a los documentos HTML.
+> - text/javascript: Código JavaScript, a menudo utilizado para scripts del lado del cliente en aplicaciones web.
+> - text/csv: Valores separados por comas, un formato común para datos tabulares.
+> - text/xml: XML (Lenguaje de marcado extensible), un formato de datos estructurados. Aunque es menos común que JSON para las nuevas API, todavía se usa ampliamente en sistemas más antiguos y para aplicaciones específicas (p. ej., fuentes RSS).
+> 1. Formatos específicos de la aplicación:
+> - application/xml: Similar a text/xml, pero indica que el contenido es un documento XML genérico, no específicamente para mostrarlo como texto.
+> - application/json: Notación de objetos de JavaScript, un formato ligero de intercambio de datos. Es extremadamente común para las API y el intercambio de datos entre servicios web.
+> - application/pdf: Formato de documento portátil, para documentos destinados a ser vistos o impresos de manera consistente.
+> - application/octet-stream: Este es un tipo de datos binarios genérico. A menudo se usa cuando el servidor no conoce el tipo específico de datos binarios, o cuando se espera que el cliente maneje la descarga como un archivo sin formato (p. ej., una descarga de archivos donde el navegador solicita al usuario que guarde).
+> - application/zip: Archivos de archivo comprimidos.
+> - application/vnd.*: Tipos MIME específicos del proveedor. Se utilizan cuando una empresa u organización define su propio formato de datos único. Por ejemplo, > - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet para un archivo XLSX de Excel.
+> - application/graphql: Para consultas y respuestas de GraphQL.
+> - application/wasm: Formato binario de WebAssembly.
+> 3. Formatos de imagen:
+> - image/jpeg: Imágenes JPEG.
+> - image/png: Imágenes PNG.
+> - image/gif: Imágenes GIF.
+> - image/svg+xml: Gráficos vectoriales escalables, imágenes vectoriales basadas en XML.
+> - image/webp: Imágenes WebP.
+> 4. Formatos de audio y video:
+> - audio/mpeg: Audio MP3.
+> - audio/ogg: Audio Ogg Vorbis.
+> - video/mp4: Vídeo MP4.
+> - video/webm: Vídeo WebM.
+> - video/ogg: Vídeo Ogg Theora.
+> 5. Mensajes multiparte:
+> - multipart/form-data: Aunque a menudo se ve en los cuerpos de las solicitudes para la carga de archivos, también puede aparecer en los cuerpos de las respuestas si el servidor devuelve varias partes distintas como una sola respuesta (menos común para la navegación web estándar, más para API especializadas).
+> - multipart/mixed: Un tipo multiparte genérico para enviar varias partes del cuerpo independientes.
 > 
-> Important Considerations:
-> - Content-Length header: If a message body is present and its size is known, the Content-Length header specifies the exact size in bytes.
-> - Transfer-Encoding: chunked: If the server doesn't know the total size of the response body in advance (e.g., for streaming data), it will use chunked transfer encoding, where the body is sent in a series of chunks, each with its own size indicator.
-> - No body for certain status codes: As mentioned, status codes like 204 No Content or 304 Not Modified explicitly indicate that there will be no message body.
-> - Error messages: Even for error responses (4xx or 5xx), the body can contain human-readable error messages, often in HTML or JSON format, to help the client or user understand what went wrong.
+> Consideraciones importantes:
+> - Encabezado Content-Length: Si hay un cuerpo de mensaje y se conoce su tamaño, el encabezado Content-Length especifica el tamaño exacto en bytes.
+> - Transfer-Encoding: chunked: Si el servidor no conoce el tamaño total del cuerpo de la respuesta de antemano (p. ej., para la transmisión de datos), utilizará la codificación de transferencia por fragmentos, donde el cuerpo se envía en una serie de fragmentos, cada uno con su propio indicador de tamaño.
+> - Sin cuerpo para ciertos códigos de estado: Como se mencionó, los códigos de estado como 204 No Content o 304 Not Modified indican explícitamente que no habrá cuerpo de mensaje.
+> - Mensajes de error: Incluso para las respuestas de error (4xx o 5xx), el cuerpo puede contener mensajes de error legibles por humanos, a menudo en formato HTML o JSON, para ayudar al cliente o al usuario a comprender qué salió mal.
 > 
-> The flexibility of HTTP, combined with the vast array of MIME types, allows servers to send virtually any kind of data as a response, making it a highly versatile protocol for the internet.
+> La flexibilidad de HTTP, combinada con la gran variedad de tipos MIME, permite a los servidores enviar prácticamente cualquier tipo de datos como respuesta, lo que lo convierte en un protocolo muy versátil para Internet.
 
 </details>
 
 
 
-### JSON Handling<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-A JSON file (JavaScript Object Notation) is a text file that stores data in a structured, readable format using key-value pairs.
-It is used for:
-- Exchanging data between servers and web apps
-- Config files
-- Storing structured data in APIs or applications
+### Manejo de JSON<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Un archivo JSON (JavaScript Object Notation) es un archivo de texto que almacena datos en un formato estructurado y legible utilizando pares clave-valor.
+Se utiliza para:
+- Intercambiar datos entre servidores y aplicaciones web
+- Archivos de configuración
+- Almacenar datos estructurados en APIs o aplicaciones
 
-Python incorporates an standard library for json manipulation
+Python incorpora una biblioteca estándar para la manipulación de JSON
 
 ```python
 import json
 
-# Convert dict to JSON 1
+# Convertir dict a JSON 1
 with open('data1.json', 'w') as f:
     json.dump({"name": "Alice"}, f)
 
-# Convert dict to JSON 2
-# Serialize to JSON
+# Convertir dict a JSON 2
+# Serializar a JSON
 json_string = json.dumps({"name": "Alice"})
 
-# Deserialize from JSON
+# Deserializar desde JSON
 data = json.loads(json_string)
 
-# Save to file
+# Guardar en archivo
 with open("data2.json", "w") as f:
     json.dump(data, f, indent=4)
 
-# Read JSON file
+# Leer archivo JSON
 with open('data2.json') as f:
     data = json.load(f)
     print(data['name'])
 ```
 
- There are other libraries for json manipulation such as [simplejson](https://pypi.org/project/simplejson/), [pandas](https://pandas.pydata.org/), [requests](https://pypi.org/project/requests/), [ujson](https://github.com/ultrajson/ultrajson), [orjson](https://github.com/ijl/orjson) and [demjson](https://github.com/dmeranda/demjson)
+ Hay otras bibliotecas para la manipulación de JSON como [simplejson](https://pypi.org/project/simplejson/), [pandas](https://pandas.pydata.org/), [requests](https://pypi.org/project/requests/), [ujson](https://github.com/ultrajson/ultrajson), [orjson](https://github.com/ijl/orjson) y [demjson](https://github.com/dmeranda/demjson)
 
 <details markdown="block">
   <summary>
-    See pandas and request examples
+    Ver ejemplos de pandas y request
   </summary>
 ```python
 import pandas as pd
@@ -212,58 +212,58 @@ data = response.json()
 
 </details>
 
-For easier visualization [https://jsonformatter.org/json-viewer](https://jsonformatter.org/json-viewer) is quite handy.
+Para una visualización más fácil, [https://jsonformatter.org/json-viewer](https://jsonformatter.org/json-viewer) es bastante útil.
 
 
-### Exception Handling<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-When programming it is best practice to introduce messages for and error handling strutures like the one below. This reduces the time in locating and fixing errors that may arise from the code itself or from the server responses.
+### Manejo de Excepciones<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Al programar, es una buena práctica introducir mensajes y estructuras de manejo de errores como la que se muestra a continuación. Esto reduce el tiempo para localizar y corregir errores que puedan surgir del propio código o de las respuestas del servidor.
 ```python
 try:
     response = requests.get("https://someapi.com/data")
     response.raise_for_status()
 except requests.exceptions.HTTPError as e:
-    print(f"HTTP error occurred: {e}")
+    print(f"Ocurrió un error HTTP: {e}")
 except KeyError:
-    print("Missing a key in the response.")
+    print("Falta una clave en la respuesta.")
 except IndexError:
-    print("List index out of range.")
+    print("Índice de lista fuera de rango.")
 except Exception as e:
-    print(f"Something went wrong: {e}")
+    print(f"Algo salió mal: {e}")
 ```
 
 
-### Authentication Types<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-The most common authentication methods are:
-- 🔑**API Key**: A unique key (like a password) is passed in the request, usually in the header or URL. This is used for basic access control for public APIs. It isn't very secure and it should always use HTTPS. See the example below with openweather. You will have to sign up and get your api key in https://home.openweathermap.org/api_keys. 
+### Tipos de Autenticación<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Los métodos de autenticación más comunes son:
+- 🔑**Clave de API**: Se pasa una clave única (como una contraseña) en la solicitud, generalmente en el encabezado o la URL. Se utiliza para el control de acceso básico para las API públicas. No es muy seguro y siempre debe usar HTTPS. Vea el ejemplo a continuación con openweather. Tendrá que registrarse y obtener su clave de API en https://home.openweathermap.org/api_keys.
 
 ```python
 import requests
 base_url = "http://api.openweathermap.org/data/2.5/weather"
 params = {
     "q": "London",
-    "appid": "YOUR_API_KEY",
-    "units": "metric"  # You can change to "imperial" for Fahrenheit
+    "appid": "SU_CLAVE_DE_API",
+    "units": "metric"  # Puede cambiar a "imperial" para Fahrenheit
 }
 response = requests.get(base_url, params=params)
 if response.status_code == 200:
     data = response.json()
-    print(f"Weather in {params['q']}: {data['weather'][0]['description']}")
+    print(f"Clima en {params['q']}: {data['weather'][0]['description']}")
 else:
     print("Error:", response.status_code, response.text)
 ```
 
-- 🍪**Basic Authentication and Session-Based Authentication (Cookie)**: which is now rare and considered insecure and never used.
+- 🍪**Autenticación Básica y Autenticación Basada en Sesión (Cookie)**: que ahora es rara y se considera insegura y nunca se usa.
 
 <details markdown="block">
   <summary>
-    click for Basic Authentication example
+    haga clic para ver un ejemplo de autenticación básica
   </summary>
 
 ```python
 import requests
 
 url = "https://api.example.com/user"
-response = requests.get(url, auth=('your_username', 'your_password'))
+response = requests.get(url, auth=('su_nombre_de_usuario', 'su_contraseña'))
 
 print(response.status_code, response.json())
 ```
@@ -272,23 +272,23 @@ print(response.status_code, response.json())
 
 <details markdown="block">
   <summary>
-    click for Session-Based Authentication example
+    haga clic para ver un ejemplo de autenticación basada en sesión
   </summary>
 
 ```python
 import requests
 
-# Step 1: Log in and get a session cookie
+# Paso 1: Inicie sesión y obtenga una cookie de sesión
 session = requests.Session()
 login_url = "https://example.com/login"
 payload = {
-    "username": "your_username",
-    "password": "your_password"
+    "username": "su_nombre_de_usuario",
+    "password": "su_contraseña"
 }
 
 response = session.post(login_url, data=payload)
 
-# Step 2: Access protected page using the same session
+# Paso 2: Acceda a la página protegida utilizando la misma sesión
 protected_url = "https://example.com/profile"
 profile_response = session.get(protected_url)
 
@@ -298,19 +298,19 @@ print(profile_response.status_code, profile_response.text)
 </details>
 
 
-- 🛡️**CSRF Tokens**: are a unique, unpredictable value that the server generates and includes in each form or API request. where the server delivers a token to the client after login in and that is then used with subsequent http requests. These tokens/cookies usually expire after some time. 
+- 🛡️**Tokens CSRF**: son un valor único e impredecible que el servidor genera e incluye en cada formulario o solicitud de API, donde el servidor entrega un token al cliente después de iniciar sesión y que luego se usa con las solicitudes http posteriores. Estos tokens/cookies suelen caducar después de un tiempo.
 
 <details markdown="block">
   <summary>
-    click for CSRF example using flask
+    haga clic para ver un ejemplo de CSRF usando flask
   </summary>
-To run this example you need to install Flask:
+Para ejecutar este ejemplo, necesita instalar Flask:
 ```bash
 pip install Flask Flask-WTF
 ```
 
 
-The flask application that will act as a server is:
+La aplicación flask que actuará como servidor es:
 
 {% raw %}
 ```python
@@ -320,28 +320,28 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import secrets
 
-# Basic Flask app
+# Aplicación básica de Flask
 app = Flask(__name__)
-app.config['SECRET_KEY'] = secrets.token_hex(16)  # Needed for CSRF protection
+app.config['SECRET_KEY'] = secrets.token_hex(16)  # Necesario para la protección CSRF
 
-# Define form with CSRF protection
+# Definir formulario con protección CSRF
 class NameForm(FlaskForm):
-    name = StringField('Your Name', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    name = StringField('Su Nombre', validators=[DataRequired()])
+    submit = SubmitField('Enviar')
 
 ```
 ```python
 
-# Route to display and handle form
+# Ruta para mostrar y manejar el formulario
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = NameForm()
     if form.validate_on_submit():
-        flash(f"Hello, {form.name.data}!", "success")
+        flash(f"¡Hola, {form.name.data}!", "success")
         return redirect('/')
     return render_template_string('''
         <!doctype html>
-        <title>CSRF Example</title>
+        <title>Ejemplo de CSRF</title>
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% for category, message in messages %}
             <div style="color:green">{{ message }}</div>
@@ -359,38 +359,38 @@ if __name__ == '__main__':
 ```
 {% endraw %}
 
-Run it with 
+Ejecútelo con
 ```bash
  python csrf_flask_example.py
  ```
 
- and then open it in the browser doing in the address http://127.0.0.1:5000/
-If you inspect in the browser the website code by doing right click in the box and cliking inspect, or by doing Ctrl+Shift+I. Then selecting the Elements tab you will find a line like
+ y luego ábralo en el navegador en la dirección http://127.0.0.1:5000/
+Si inspecciona el código del sitio web en el navegador haciendo clic con el botón derecho en el cuadro y haciendo clic en inspeccionar, o haciendo Ctrl+Shift+I. Luego, seleccionando la pestaña Elementos, encontrará una línea como
 
 ```html
-<input id="csrf_token" name="csrf_token" type="hidden" value="something_like_4jh56yFj3...">
+<input id="csrf_token" name="csrf_token" type="hidden" value="algo_como_4jh56yFj3...">
 ```
 
-![CSRF Token in browser inspector](CSRF_screenshot.png)
+![Token CSRF en el inspector del navegador](CSRF_screenshot.png)
 
 
 </details>
 
 
-- **OAuth**: is a multi-step process often done in a web app.It is typically used with services like Google, Facebook, iOS apps. We will see more practical example of this later.
+- **OAuth**: es un proceso de varios pasos que a menudo se realiza en una aplicación web. Se usa típicamente con servicios como Google, Facebook, aplicaciones de iOS. Veremos un ejemplo más práctico de esto más adelante.
 
 <details markdown="block">
   <summary>
-    click for OAuth 2.0
+    haga clic para OAuth 2.0
   </summary>
-The python code below is just for explanation of the process. It won't run. Please see and try actual examples in the next point.
+El código de Python a continuación es solo para explicar el proceso. No se ejecutará. Por favor, vea y pruebe ejemplos reales en el siguiente punto.
 
 ```python
 import requests
 import webbrowser
 
-# Step 1: Redirect user to authorization URL
-client_id = "YOUR_CLIENT_ID"
+# Paso 1: Redirigir al usuario a la URL de autorización
+client_id = "SU_CLIENT_ID"
 redirect_uri = "http://localhost:8080/callback"
 auth_url = (
     f"https://auth.example.com/oauth/authorize?response_type=code"
@@ -398,26 +398,26 @@ auth_url = (
 )
 webbrowser.open(auth_url)
 
-# Step 2: User logs in and gets redirected to a URL like:
-# http://localhost:8080/callback?code=AUTH_CODE
-# You must manually extract this `code` for the next step.
+# Paso 2: El usuario inicia sesión y es redirigido a una URL como:
+# http://localhost:8080/callback?code=CODIGO_DE_AUTORIZACION
+# Debe extraer manualmente este `código` para el siguiente paso.
 
-# Step 3: Exchange auth code for access token
-auth_code = input("Paste the authorization code here: ")
+# Paso 3: Intercambiar el código de autenticación por un token de acceso
+auth_code = input("Pegue el código de autorización aquí: ")
 token_url = "https://auth.example.com/oauth/token"
 data = {
     "grant_type": "authorization_code",
     "code": auth_code,
     "redirect_uri": redirect_uri,
     "client_id": client_id,
-    "client_secret": "YOUR_CLIENT_SECRET"
+    "client_secret": "SU_CLIENT_SECRET"
 }
 
 response = requests.post(token_url, data=data)
 token_data = response.json()
 access_token = token_data['access_token']
 
-# Step 4: Use the token
+# Paso 4: Usar el token
 headers = {"Authorization": f"Bearer {access_token}"}
 protected_url = "https://api.example.com/userinfo"
 user_data = requests.get(protected_url, headers=headers)
@@ -427,43 +427,43 @@ print(user_data.json())
 </details>
 
 
-### Environment Variables<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-Environment variables allow you to store sensitive data (like API keys, passwords, secrets) outside of your source code.
-Instead of doing this ❌:
+### Variables de Entorno<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Las variables de entorno le permiten almacenar datos confidenciales (como claves de API, contraseñas, secretos) fuera de su código fuente.
+En lugar de hacer esto ❌:
 
 ```python
-API_KEY = "my-super-secret-api-key-123"
+API_KEY = "mi-clave-de-api-super-secreta-123"
 ```
 
-You do this ✅:
+Haces esto ✅:
 
 ```python
 import os
 API_KEY = os.getenv("API_KEY")
 ```
 
-Then set the key in your environment:
+Luego establezca la clave en su entorno:
 
 ```bash
-export API_KEY=my-super-secret-api-key-123
+export API_KEY=mi-clave-de-api-super-secreta-123
 ```
 
-| Benefit                     | Why It Matters                                                        |
+| Beneficio                  | Por qué es importante                                                     |
 | --------------------------- | --------------------------------------------------------------------- |
-| **Security**             | Keeps secrets out of source code (e.g. GitHub repo)                   |
-| **Configurability**      | You can change keys or settings **without changing code**             |
-| **Environment-Specific** | Different values for dev, staging, production                         |
-| **Reusability**          | Same codebase, different configs based on environment                 |
-| **Cloud-Friendly**       | All major cloud platforms support secret management via env variables |
+| **Seguridad**               | Mantiene los secretos fuera del código fuente (p. ej., repositorio de GitHub) |
+| **Configurabilidad**        | Puede cambiar claves o configuraciones **sin cambiar el código**      |
+| **Específico del entorno**  | Diferentes valores para desarrollo, ensayo y producción               |
+| **Reutilización**           | Mismo código base, diferentes configuraciones según el entorno      |
+| **Compatible con la nube**  | Todas las principales plataformas en la nube admiten la gestión de secretos a través de variables de entorno |
 
-For local dev, you can store secrets in a .env file:
+Para el desarrollo local, puede almacenar secretos en un archivo `.env`:
 `.env`
 ```ini
 API_KEY=abcdef123456
-DB_PASSWORD=my_db_pass
+DB_PASSWORD=mi_contraseña_de_bd
 ```
 
-Load it in Python
+Cárguelo en Python
 ```bash
 pip install python-dotenv
 ```
@@ -472,50 +472,50 @@ pip install python-dotenv
 from dotenv import load_dotenv
 import os
 
-load_dotenv()  # loads from .env file
+load_dotenv()  # carga desde el archivo .env
 api_key = os.getenv("API_KEY")
 ```
 
 {: .warning}
-> NEVER Hardcode Secrets. If you commit a secret to GitHub: 
-> 🔓 Anyone can see it, 
-> 🤖 Bots constantly scan public repos for secrets, 
-> 💣 API providers may revoke or abuse keys and 
-> ☠️ You could be billed or attacked (e.g., if AWS keys are leaked)
+> NUNCA codifique secretos. Si confirma un secreto en GitHub:
+> 🔓 Cualquiera puede verlo,
+> 🤖 Los bots escanean constantemente los repositorios públicos en busca de secretos,
+> 💣 Los proveedores de API pueden revocar o abusar de las claves y
+> ☠️ Podría ser facturado o atacado (p. ej., si se filtran las claves de AWS)
 
 {: .warning}
-> AI Coding agents 🕵️ have the tendency to Hardcode API keys. ALWAYS revise your code!!
+> Los agentes de codificación de IA 🕵️ tienen la tendencia a codificar claves de API. ¡SIEMPRE revise su código!
 
 {: .warning}
-> Ensure .gitignore excludes .env from being uploaded to GitHub
+> Asegúrese de que `.gitignore` excluya `.env` de ser subido a GitHub
 
 
 ---
-### 🍏 1. Habit & Nutrition Dashboard using Google Sheets and Nutritionix<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 🍏 1. Panel de Hábitos y Nutrición usando Hojas de Cálculo de Google y Nutritionix<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-The goal of this exercise is to create a text app to track your daily food intake and exercise. We will be using the following APIs
+El objetivo de este ejercicio es crear una aplicación de texto para realizar un seguimiento de su ingesta diaria de alimentos y ejercicio. Usaremos las siguientes API:
 
-- **Nutritionix**: To parse food and exercise items
-- **Google Sheets (via Sheety)**: Store data
+- **Nutritionix**: Para analizar alimentos y elementos de ejercicio
+- **Hojas de cálculo de Google (a través de Sheety)**: Almacenar datos
 
 
 #### Nutritionix<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-We will have to create a free acount in [Nutritionix](https://www.nutritionix.com/business/api), and then create some [API key](https://developer.nutritionix.com/admin/access_details) and save them to the .env file
+Tendremos que crear una cuenta gratuita en [Nutritionix](https://www.nutritionix.com/business/api), y luego crear una [clave de API](https://developer.nutritionix.com/admin/access_details) y guardarla en el archivo `.env`.
 
-![Nutritionix Api Key](Nutritionix_API_key.png)
+![Clave de API de Nutritionix](Nutritionix_API_key.png)
 
-`.env` file
+Archivo `.env`
 ```python
 NUTRITIONIX_KEY="ec3***"
 NUTRITIONIX_ID="8b***"
 ```
 
-Then we can do some END POINT tests as explained in ther [Getting started documentation](https://docx.syndigo.com/developers/docs/get-started) for which we can use postman to try some [Endpoints](https://docx.syndigo.com/developers/docs/natural-language-for-nutrients). 
+Luego podemos hacer algunas pruebas de PUNTO FINAL como se explica en su [documentación de inicio](https://docx.syndigo.com/developers/docs/get-started) para lo cual podemos usar postman para probar algunos [Puntos finales](https://docx.syndigo.com/developers/docs/natural-language-for-nutrients).
 
 ![Postman](Nutritionix_Postman.png)
 
-Once we understand the headers and authentication syntax, we pass it to python code as follows:
+Una vez que entendemos los encabezados y la sintaxis de autenticación, lo pasamos al código de Python de la siguiente manera:
 
 ```python
 import requests, os
@@ -523,7 +523,7 @@ import datetime
 from dotenv import load_dotenv
 import json
 
-# Load environment variables from .env file
+# Cargar variables de entorno desde el archivo .env
 load_dotenv()
 
 # Nutritionix
@@ -534,24 +534,24 @@ headers = {
     "x-app-key": os.environ.get("NUTRITIONIX_KEY"),
 }
 print(headers)
-query = input("What did you eat? ")
+query = input("¿Qué comiste? ")
 data = {"query": query}
 nutrition_response = requests.post(NUTRITIONIX_NLP_NUTRIENTS_URL_ENDPOINT, headers=headers,json=data )
 calories = nutrition_response.json()["foods"][0]["nf_calories"]
-print(f"Calories consumed in {query}: {calories}")
+print(f"Calorías consumidas en {query}: {calories}")
 
 
 NUTRITIONIX_NLP_EXERCISE_URL_ENDPOINT = " https://trackapi.nutritionix.com/v2/natural/exercise"
-exercise_config = {"query": input("What exercises did you do (you can include duration and/or distance)?: "),}
+exercise_config = {"query": input("¿Qué ejercicios hiciste (puedes incluir duración y/o distancia)?: "),}
 
 exercise_response = requests.post(NUTRITIONIX_NLP_EXERCISE_URL_ENDPOINT, headers=headers, json=exercise_config)
 
 user_input = exercise_response.json()["exercises"][0]["user_input"]
 duration = exercise_response.json()["exercises"][0]["duration_min"]
 calories = exercise_response.json()["exercises"][0]["nf_calories"]
-print(f"Exercise: {user_input}, Duration: {duration}, Calories: {calories}")
+print(f"Ejercicio: {user_input}, Duración: {duration}, Calorías: {calories}")
 
-# Save response to a JSON file
+# Guardar respuesta en un archivo JSON
 with open('nlp_food.json', 'w') as f:
     json.dump(nutrition_response.json(), f, indent=4)
 with open('nlp_exercise.json', 'w') as f:
@@ -559,28 +559,28 @@ with open('nlp_exercise.json', 'w') as f:
 
 ```
 
-#### Google Sheets with SHEETY<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+#### Hojas de Cálculo de Google con SHEETY<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-To store the data we will use Google Sheets and Sheety API. We will have to signup for free in [Sheety](https://sheety.co/) and create an project. 
+Para almacenar los datos usaremos Hojas de Cálculo de Google y la API de Sheety. Tendremos que registrarnos gratis en [Sheety](https://sheety.co/) y crear un proyecto.
 
-![Sheety Project](Sheety_new_project.png)
+![Proyecto Sheety](Sheety_new_project.png)
 
-Which needs to be linked to a Google Sheet. We will also create the tables that we want to fill in. 
+Que debe estar vinculado a una Hoja de Cálculo de Google. También crearemos las tablas que queremos rellenar.
 
-![Google Sheet](Google_sheets_setup.png)
+![Configuración de la Hoja de Cálculo de Google](Google_sheets_setup.png)
 
-Next we will have to create an Authentication code in Sheety. 
+A continuación, tendremos que crear un código de autenticación en Sheety.
 
-![authentication code](Sheety_Authentication.png)
+![código de autenticación](Sheety_Authentication.png)
 
-And allow Post requests on it. 
+Y permitir solicitudes Post en él.
 
-![Sheety Post Request](Sheety_Allow_post_request.png)
+![Solicitud Post de Sheety](Sheety_Allow_post_request.png)
 
-Then we assemble the headers and payload and write down the post requests to fill the google sheet. 
+Luego ensamblamos los encabezados y la carga útil y escribimos las solicitudes post para rellenar la hoja de cálculo de Google.
 
 ```python
-# Google Sheets
+# Hojas de Cálculo de Google
 SHEETY_AUTH_TOKEN = os.environ.get("SHEETY_AUTH_TOKEN")
 SHEETY_NUTRITION_ENDPOINT_API = os.environ.get("SHEETY_NUTRITION_URL")
 SHEETY_EXERCISE_ENDPOINT_API = os.environ.get("SHEETY_EXERCISE_URL")
@@ -590,7 +590,7 @@ headers = {
 }
 
 
-#Record current date and time
+# Registrar fecha y hora actuales
 date = datetime.datetime.now()
 formatted_date = date.strftime("%d/%m/%Y")
 time = date.strftime("%H:%M:%S")
@@ -615,7 +615,7 @@ workout_data = {
   }
 
 
-# Add new row to the spreadsheet with inputted data
+# Añadir nueva fila a la hoja de cálculo con los datos introducidos
 #print(headers)
 new_response = requests.post(url=SHEETY_NUTRITION_ENDPOINT_API, json=nutrition_data, headers=headers)
 new_response = requests.post(url=SHEETY_EXERCISE_ENDPOINT_API, json=workout_data, headers=headers)
@@ -627,23 +627,23 @@ new_response = requests.post(url=SHEETY_EXERCISE_ENDPOINT_API, json=workout_data
 ---
 
 
-### 📈 2. Stock and News with Whatsapp Alerts<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 📈 2. Acciones y Noticias con Alertas de Whatsapp<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-#### APIs Used<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-- **Alpha Vantage**: Real-time stock data
-- **FINNHUB News API**: Financial news
-- **Twilio Bot API**: Message sending
+#### APIs Utilizadas<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+- **Alpha Vantage**: Datos de acciones en tiempo real
+- **API de Noticias FINNHUB**: Noticias financieras
+- **API de Bot de Twilio**: Envío de mensajes
 
-#### Stock prices with Alpha Vantage<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+#### Precios de las acciones con Alpha Vantage<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-The settup of alphavantage API is relatively straight forward. You simply fill in the [Form](https://www.alphavantage.co/support/) to get the key that needs to go in your .env file 
+La configuración de la API de alphavantage es relativamente sencilla. Simplemente complete el [Formulario](https://www.alphavantage.co/support/) para obtener la clave que debe ir en su archivo `.env`.
 
 <details markdown="block">
   <summary>
-    Alpha Vantage API key form
+    Formulario de clave de API de Alpha Vantage
   </summary>
 
-![Alpha_Vantage_Key_Form](Alpha_Vantage_Key.png)
+![Formulario de clave de API de Alpha Vantage](Alpha_Vantage_Key.png)
 
 </details>
 
@@ -652,18 +652,18 @@ The settup of alphavantage API is relatively straight forward. You simply fill i
 from dotenv import load_dotenv
 import requests, os
 
-# Load environment variables from .env file
+# Cargar variables de entorno desde el archivo .env
 load_dotenv()
 
-# Stock price
+# Precio de las acciones
 stock_params = {"symbol": "APPL", "apikey": os.getenv("ALPHA_API_KEY")}
 stock_response = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY", params=stock_params)
 data = stock_response.json()
 yesterday = list(data["Time Series (Daily)"].keys())[0]
 price = float(data["Time Series (Daily)"][yesterday]["4. close"])
-print(f"APPL closing price yesterday {yesterday}: ${price}")
+print(f"Precio de cierre de APPL ayer {yesterday}: ${price}")
 ```
-`.env` file
+Archivo `.env`
 ```python
 ALPHA_API_KEY="***"
 TWILIO_ACCOUNT_SID="***"
@@ -671,101 +671,101 @@ TWILIO_AUTH_TOKEN="***"
 FINNHUB_API_KEY="***"
 ```
 
-#### Get Financial news<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-In the second part of this example, we are going to learn how to connect to [Finhub](https://finnhub.io/dashboard), which provides financial news with free tier. You will then need to create an API key. 
+#### Obtener noticias financieras<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+En la segunda parte de este ejemplo, vamos a aprender a conectarnos a [Finhub](https://finnhub.io/dashboard), que proporciona noticias financieras con un nivel gratuito. Luego deberá crear una clave de API.
 
-![Finnhub Api Key](FINNHUB_API_key.png)
+![Clave de API de Finnhub](FINNHUB_API_key.png)
 
-This time we are going to use their very well documented [python repository](https://github.com/Finnhub-Stock-API/finnhub-python) by first installing it. 
+Esta vez vamos a usar su muy bien documentado [repositorio de Python](https://github.com/Finnhub-Stock-API/finnhub-python) instalándolo primero.
 
 ```bash
 pip install finnhub-python
 ```
-And then following one of their code examples is used. 
+Y luego se utiliza uno de sus ejemplos de código.
 
 ```python
-# News API
+# API de Noticias
 import finnhub
 import datetime
 
-# Get dates
+# Obtener fechas
 today = datetime.datetime.now().strftime('%Y-%m-%d')
 yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
 
-# Setup client
+# Configurar cliente
 finnhub_client = finnhub.Client(api_key=os.environ.get("FINNHUB_API_KEY"))
-# Company News
-# Need to use _from instead of from to avoid conflict
+# Noticias de la empresa
+# Es necesario usar _from en lugar de from para evitar conflictos
 latest_news = finnhub_client.company_news('AAPL', _from=yesterday, to=today)
-print(f"Latest news for AAPL from {yesterday} to {today}:")
+print(f"Últimas noticias de AAPL desde {yesterday} hasta {today}:")
 
 for news in latest_news[:5]:
-    print(f"Title: {news['headline']}")
-    print(f"Source: {news['source']}")
-    print(f"Date: {news['datetime']}")
-    print(f"Summary: {news['summary']}")
+    print(f"Título: {news['headline']}")
+    print(f"Fuente: {news['source']}")
+    print(f"Fecha: {news['datetime']}")
+    print(f"Resumen: {news['summary']}")
     print("-" * 50)
 ```
-Which results in 
+Lo que resulta en
 
 
 ```
-Latest news for AAPL from 2025-06-08 to 2025-06-09:
-Title: Apple's New Design Language
-Source: Finnhub
-Date: 1749486328
-Summary: Apple is expected to showcase a new redesign of its software across all its products at this year's WWDC. Bloomberg's Mark Gurman explains....
+Últimas noticias de AAPL desde 2025-06-08 hasta 2025-06-09:
+Título: El nuevo lenguaje de diseño de Apple
+Fuente: Finnhub
+Fecha: 1749486328
+Resumen: Se espera que Apple muestre un nuevo rediseño de su software en todos sus productos en la WWDC de este año. Mark Gurman de Bloomberg lo explica....
 --------------------------------------------------
-Title: Building A $75,000 Dividend Portfolio: Enhancing SCHD With June's Top High-Yield Picks
-Source: SeekingAlpha
-Date: 1749481200
-Summary: SCHD remains a particularly attractive investment option for long-term investors. Check out how to build a $75,000 dividend portfolio with SCHD as a core.
+Título: Construyendo una cartera de dividendos de 75.000 dólares: Mejorando SCHD con las mejores selecciones de alto rendimiento de junio
+Fuente: SeekingAlpha
+Fecha: 1749481200
+Resumen: SCHD sigue siendo una opción de inversión particularmente atractiva para los inversores a largo plazo. Vea cómo construir una cartera de dividendos de 75.000 dólares con SCHD como núcleo.
 ```
 
-#### Send emails, Whatsapps, SMS, Video, Audio with Twilio<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+#### Enviar correos electrónicos, Whatsapps, SMS, Video, Audio con Twilio<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Now we are going to try to use [Twilio](https://www.twilio.com/en-us) which has a very powerful API to send emails, Whatsapp messages, SMS, and more. 
+Ahora vamos a intentar usar [Twilio](https://www.twilio.com/en-us), que tiene una API muy potente para enviar correos electrónicos, mensajes de Whatsapp, SMS y más.
 
-[First time](https://console.twilio.com/us1/develop/sms/try-it-out/whatsapp-learn?frameUrl=%2Fconsole%2Fsms%2Fwhatsapp%2Flearn%3Fx-target-region%3Dus1) that you use it, after setting up the Keys you will have to log in with a Whatsapp account. It will ask you to open a QR code and guide throught e process. You can also text join finally-gold to +14155238886<br>
+La [primera vez](https://console.twilio.com/us1/develop/sms/try-it-out/whatsapp-learn?frameUrl=%2Fconsole%2Fsms%2Fwhatsapp%2Flearn%3Fx-target-region%3Dus1) que lo use, después de configurar las claves, tendrá que iniciar sesión con una cuenta de Whatsapp. Le pedirá que abra un código QR y lo guiará a través del proceso. También puede enviar un mensaje de texto `join finally-gold` a `+14155238886`<br>
 
 <img src="Twilio_Mobile_Phone1.jpg" alt="Twilio Connect Whatsapp" width="40%">
 
 
-Then you can [test requests](https://console.twilio.com/us1/develop/sms/content-template-builder/template/HX38f4a38e390bfec8bfe8760c5d013619) on the web that you can directly apply to your code. 
+Luego puede [probar solicitudes](https://console.twilio.com/us1/develop/sms/content-template-builder/template/HX38f4a38e390bfec8bfe8760c5d013619) en la web que puede aplicar directamente a su código.
 
-![Twilio Test on Web](Twilio_Test_Web.png)
+![Prueba de Twilio en la Web](Twilio_Test_Web.png)
 
 
-<img src="Twilio_Mobile_Phone2.jpg" alt="Twilio Send to Whatsapp" width="40%">
+<img src="Twilio_Mobile_Phone2.jpg" alt="Twilio Enviar a Whatsapp" width="40%">
 
-Twilio has a number of templates for the messages and also allow you to create your own ones. 
+Twilio tiene una serie de plantillas para los mensajes y también le permite crear las suyas propias.
 
-![Content Template Builder](Twilio_Content_Template_Builder.png)
+![Creador de plantillas de contenido](Twilio_Content_Template_Builder.png)
 
-If we implement this code in our script rather than using directly in the testing area of the portal it looks like the extract below:
+Si implementamos este código en nuestro script en lugar de usarlo directamente en el área de prueba del portal, se ve como el extracto a continuación:
 
 {% raw %}
 ```python
-# Send message via Twilio WhatsApp
+# Enviar mensaje a través de Twilio WhatsApp
 from twilio.rest import Client
 
 account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
 auth_token =  os.environ.get('TWILIO_AUTH_TOKEN')
-print("Twilio account SID:", account_sid)
-print("Twilio auth token:", auth_token)
+print("SID de la cuenta de Twilio:", account_sid)
+print("Token de autenticación de Twilio:", auth_token)
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
     from_='whatsapp:+14155238886',
-    #content_sid='HXb5b62575e6e4ff6129ad7c8efe1f983e', # Your appointment is coming up on {1} at {2}
+    #content_sid='HXb5b62575e6e4ff6129ad7c8efe1f983e', # Su cita es el {1} a las {2}
     #content_variables='{"1":"12/1","2":"3pm"}',
-    #content_sid='HX350d429d32e64a552466cafecbe95f3c', # Thank you for your order. Your delivery is scheduled for {1} at {2}
+    #content_sid='HX350d429d32e64a552466cafecbe95f3c', # Gracias por su pedido. Su entrega está programada para el {1} a las {2}
     #content_variables='{"1":"12/1","2":"3pm"}',
-    #content_sid='HX229f5a04fd0510ce1b071852155d3e75', # {1} is your verification code. For your security, do not share this code.
+    #content_sid='HX229f5a04fd0510ce1b071852155d3e75', # {1} es su código de verificación. Por su seguridad, no comparta este código.
     #content_variables='{"1":"409173"}',    
-    content_sid='HX38f4a38e390bfec8bfe8760c5d013619', # APPL closing price: ${{1}}
+    content_sid='HX38f4a38e390bfec8bfe8760c5d013619', # Precio de cierre de APPL: ${{1}}
     content_variables=f'{{"1":"{price}"}}',
-    to='whatsapp:+44YOUR TELEPHONE NUMBER GOES HERE'
+    to='whatsapp:+44SU NÚMERO DE TELÉFONO VA AQUÍ'
 )
 
 print(message.sid)
@@ -777,20 +777,20 @@ print(message.sid)
 
 
 
-### ✈️ 3. Cheap Flight Finder and Email Alerts<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### ✈️ 3. Buscador de Vuelos Baratos y Alertas por Correo Electrónico<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-#### APIs Used and Development process<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-In this example we will create a text app that uses Amadeus API for flight search and send email alerts using the gmail API. To get to that point we will learn how to navigate GitHub documentation and get support from LLMs and Agents for each of the steps involved:
-- Authenticate in Amadeus
-- To search for flights doing a Request and using **datetime** for date management.
-- Process the response into a **json file**, a **csv file**
-- To send an email notification with **smtp**. 
+#### APIs Utilizadas y proceso de Desarrollo<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+En este ejemplo crearemos una aplicación de texto que utiliza la API de Amadeus para la búsqueda de vuelos y envía alertas por correo electrónico utilizando la API de Gmail. Para llegar a ese punto, aprenderemos a navegar por la documentación de GitHub y a obtener soporte de LLMs y Agentes para cada uno de los pasos involucrados:
+- Autenticarse en Amadeus
+- Buscar vuelos haciendo una Solicitud y usando **datetime** para la gestión de fechas.
+- Procesar la respuesta en un **archivo json**, un **archivo csv**
+- Enviar una notificación por correo electrónico con **smtp**.
 
-The first thing would be to pront an LLM (either Claude, Gemini or Chat GPT) in the web or in GitHub Copilot within VSCode. We would ask it to create a python script to search for flights on an specific date with the API service that we decided. The ones that I looked at were [Tequila](https://tequila.kiwi.com/) which needs manual registering via email, [Skyscanner](https://www.partners.skyscanner.net/product/travel-api) which needs an enterprise account and [Amadeus](https://developers.amadeus.com/register) which is currently (09/06/2025) free and easy to [register](https://developers.amadeus.com/register). We follow the steps in [Get Started](https://developers.amadeus.com/get-started/get-started-with-self-service-apis-335) to get the keys. 
+Lo primero sería pedir a un LLM (ya sea Claude, Gemini o Chat GPT) en la web o en GitHub Copilot dentro de VSCode. Le pediríamos que cree un script de Python para buscar vuelos en una fecha específica con el servicio de API que decidimos. Los que miré fueron [Tequila](https://tequila.kiwi.com/) que necesita registro manual por correo electrónico, [Skyscanner](https://www.partners.skyscanner.net/product/travel-api) que necesita una cuenta de empresa y [Amadeus](https://developers.amadeus.com/register) que actualmente (09/06/2025) es gratuito y fácil de [registrar](https://developers.amadeus.com/register). Seguimos los pasos en [Comenzar](https://developers.amadeus.com/get-started/get-started-with-self-service-apis-335) para obtener las claves.
 
-![Amadeus-keys](Amadeus_key.png)
+![Claves de Amadeus](Amadeus_key.png)
 
-We then add them to the `.env` file in the same directory than the python script or in the `PATH`. 
+Luego las agregamos al archivo `.env` en el mismo directorio que el script de Python o en el `PATH`.
 
 ```python
 AMADEUS_API_KEY="b4t2..."
@@ -800,16 +800,16 @@ GMAIL_PASSWORD="cyjb ..."
 OPENWEATHER_API_KEY="24a..."
 ```
 
-The code that was generated in all attempts with the LLMs and agents did not work but provided some structure and mentioned the GitHub library [amadeus4dev](https://github.com/amadeus4dev/amadeus-python/tree/master) which contains [manual](https://github.com/amadeus4dev/amadeus-python/tree/master) and simple [examples](https://github.com/amadeus4dev/amadeus-code-examples). 
+El código que se generó en todos los intentos con los LLM y los agentes no funcionó, pero proporcionó cierta estructura y mencionó la biblioteca de GitHub [amadeus4dev](https://github.com/amadeus4dev/amadeus-python/tree/master) que contiene [manual](https://github.com/amadeus4dev/amadeus-python/tree/master) y [ejemplos](https://github.com/amadeus4dev/amadeus-code-examples) simples.
 
-We install it by running the following line in bash:
+Lo instalamos ejecutando la siguiente línea en bash:
 ```python
 pip install amadeus
 ```
-#### Request and json file<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-So we then get the following code that connects to Amadeus and exports the response to a json file. 
+#### Solicitud y archivo json<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Así que luego obtenemos el siguiente código que se conecta a Amadeus y exporta la respuesta a un archivo json.
 
- 
+
 ```python
 from amadeus import Client, ResponseError
 import os, smtplib
@@ -818,7 +818,7 @@ from datetime import datetime, timedelta
 import json
 import csv
 
-# Load environment variables from .env file
+# Cargar variables de entorno desde el archivo .env
 load_dotenv()
 
 amadeus = Client(
@@ -829,7 +829,7 @@ amadeus = Client(
 
 try:
     # -------------------------------------------------------------
-    # Search for flights
+    # Buscar vuelos
     response = amadeus.shopping.flight_offers_search.get(
         originLocationCode='LON',
         destinationLocationCode='SCQ',
@@ -838,14 +838,14 @@ try:
         currencyCode='GBP')
     
     # -------------------------------------------------------------
-    # Save response to a JSON file
+    # Guardar respuesta en un archivo JSON
     with open('flight_offers.json', 'w') as f:
         json.dump(response.data, f, indent=4)
 ```
 
 <details markdown="block">
   <summary>
-    Json response file
+    Archivo de respuesta Json
   </summary>
 
 ```json
@@ -948,30 +948,30 @@ try:
 ```
 </details>
 
-#### Export to a csv file<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+#### Exportar a un archivo csv<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
 
-Now we ask the LLM AI agent to create a table in a csv file with the desired fields and we give both the .py file and the .json for context. And we got the result below. 
+Ahora le pedimos al agente de IA de LLM que cree una tabla en un archivo csv con los campos deseados y le damos tanto el archivo `.py` como el `.json` como contexto. Y obtuvimos el siguiente resultado.
 
 ```python
     # -------------------------------------------------------------
-    # Extract flight data for CSV
+    # Extraer datos de vuelo para CSV
     csv_data = []
     for offer in response.data:
         price_grand_total = offer['price']['grandTotal']
         
-        # Process each itinerary
+        # Procesar cada itinerario
         for itinerary in offer['itineraries']:
-            # For each segment in the itinerary
+            # Para cada segmento en el itinerario
             for segment in itinerary['segments']:
-                # Get basic segment info
+                # Obtener información básica del segmento
                 dep_iata = segment['departure']['iataCode']
                 dep_time = segment['departure']['at']
                 arr_iata = segment['arrival']['iataCode']
                 arr_time = segment['arrival']['at']
                 carrier_code = segment['carrierCode']
                 
-                # Get baggage info from the first traveler pricing
+                # Obtener información de equipaje del primer precio del viajero
                 baggage_info = {}
                 cabin_bags_qty = None
                 checked_bags_weight = None
@@ -992,7 +992,7 @@ Now we ask the LLM AI agent to create a table in a csv file with the desired fie
                                 if 'includedCabinBags' in fare_detail and 'quantity' in fare_detail['includedCabinBags']:
                                     cabin_bags_qty = fare_detail['includedCabinBags']['quantity']
                 
-                # Add to CSV data
+                # Añadir a los datos CSV
                 csv_data.append({
                     'departure_iatacode': dep_iata,
                     'departure_at': dep_time,
@@ -1005,7 +1005,7 @@ Now we ask the LLM AI agent to create a table in a csv file with the desired fie
                     'included_cabinbags_quantity': cabin_bags_qty
                 })
     
-    # Write to CSV
+    # Escribir en CSV
     csv_fields = ['departure_iatacode', 'departure_at', 'arrival_iatacode', 'arrival_at', 
                  'carriercode', 'price_grandtotal', 'included_checkedbags_weight', 
                  'included_checkedbags_weightunit', 'included_cabinbags_quantity']
@@ -1014,17 +1014,17 @@ Now we ask the LLM AI agent to create a table in a csv file with the desired fie
         writer.writeheader()
         writer.writerows(csv_data)
     
-    print(f"Flight data extracted and saved to flight_data.csv")
+    print(f"Datos de vuelo extraídos y guardados en flight_data.csv")
 ```
 
-#### Send email alerts<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+#### Enviar alertas por correo electrónico<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Similarly, we ask gemini to add an email alert if the flight price is below 150gbp using smtp and gmail. It came with the code below and we only have to ensure the passwords in the .env file are the correct ones. 
+Del mismo modo, le pedimos a Gemini que agregue una alerta por correo electrónico si el precio del vuelo es inferior a 150 gbp usando smtp y gmail. Se le ocurrió el código a continuación y solo tenemos que asegurarnos de que las contraseñas en el archivo `.env` sean las correctas.
 
 
 ```python
     # -------------------------------------------------------------
-    # Check if any flights are below price threshold and send email notification
+    # Comprobar si algún vuelo está por debajo del umbral de precio y enviar una notificación por correo electrónico
     for offer in response.data:
         price_grand_total = float(offer['price']['grandTotal'])
         if price_grand_total < 150:
@@ -1035,38 +1035,38 @@ Similarly, we ask gemini to add an email alert if the flight price is below 150g
                     connection.sendmail(
                         from_addr=os.getenv("EMAIL_ADDRESS"),
                         to_addrs="toemail@gmail.com",
-                        msg=f"Subject:Cheap Flight Alert!\n\nOnly {price_grand_total}GBP to fly to Santiago de Compostela!\n On the {dep_time} with {offer['itineraries'][0]['segments'][0]['carrierCode']}.\n\n"
+                        msg=f"Subject:¡Alerta de vuelo barato!\n\n¡Solo {price_grand_total}GBP para volar a Santiago de Compostela!\n El {dep_time} con {offer['itineraries'][0]['segments'][0]['carrierCode']}.\n\n"
                     )
-                print(f"Email alert sent for flight priced at £{price_grand_total}")
+                print(f"Alerta por correo electrónico enviada para un vuelo con un precio de £{price_grand_total}")
             except Exception as e:
-                print(f"Failed to send email alert: {e}")
+                print(f"No se pudo enviar la alerta por correo electrónico: {e}")
     
 except ResponseError as error:
     print(error)
 ```
 
-When we tried for the first one with our normal password, we received an error from the server 
+Cuando lo intentamos por primera vez con nuestra contraseña normal, recibimos un error del servidor
 
 ```bash
-Failed to send email alert: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 5b1f17b1804b1-4526e0563cesm112983275e9.1 - gsmtp')
+No se pudo enviar la alerta por correo electrónico: (534, b'5.7.9 Se requiere una contraseña específica de la aplicación. Para obtener más información, vaya a\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 5b1f17b1804b1-4526e0563cesm112983275e9.1 - gsmtp')
 ```
 
-which led us to a website where we have to set up a password for a developement app. 
-![Gmail-App-Password](Gmail_App_API.png)
+lo que nos llevó a un sitio web donde tenemos que configurar una contraseña para una aplicación de desarrollo.
+![Contraseña de la aplicación de Gmail](Gmail_App_API.png)
 
 
 
 ---
 
-## ✅ Summary<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## ✅ Resumen<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-| Concept | Tools Used |
+| Concepto | Herramientas utilizadas |
 |--------|-------------|
-| API Fundamentals | `requests`, `json`, error handling |
-| Authentication | API Key, Basic Auth |
+| Fundamentos de la API | `requests`, `json`, manejo de errores |
+| Autenticación | Clave de API, Autenticación básica |
 | JSON | `json.load`, `json.dump` |
-| Data Storage | `.env`, Google Sheets via Sheety, csv file |
-| Communication | Email (SMTP), Twilio |
+| Almacenamiento de datos | `.env`, Hojas de cálculo de Google a través de Sheety, archivo csv |
+| Comunicación | Correo electrónico (SMTP), Twilio |
 
 
-> 🚀 This tutorial bridges theory with practice using exciting, purposeful applications. You now have the tools to build your own API-powered projects!
+> 🚀 Este tutorial une la teoría con la práctica utilizando aplicaciones emocionantes y con propósito. ¡Ahora tienes las herramientas para construir tus propios proyectos impulsados por API!

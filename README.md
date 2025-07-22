@@ -1,115 +1,115 @@
-# 10 Days of Code with AI
+# 10 Días de Código con IA
 
-This repository contains the course notes and code examples of the course [10 Days of Python with AI]. The course is aimed for curious Vibe coders with no programming background who want to have a wholistic view of coding and ai technologies and the skills to debug, specify and scrutinise code that is mainly produced with AI. 
+Este repositorio contiene las notas del curso y los ejemplos de código del curso [10 Días de Python con IA]. El curso está dirigido a programadores curiosos de Vibe sin experiencia en programación que desean tener una visión holística de la codificación y las tecnologías de IA y las habilidades para depurar, especificar y examinar el código que se produce principalmente con IA.
 
-The course is mainly produce to use [Visual Studio Code] and [Github Copilot]; and a big part of it uses python for automatization, API calls, web programming, AI programming and more. 
+El curso está producido principalmente para usar [Visual Studio Code] y [Github Copilot]; y una gran parte de él usa python para automatización, llamadas a API, programación web, programación de IA y más.
 
-The course notes themselves may be found in [10 Days of Code with AI course notes] and the code examples in [git hub code examples]. Once [Visual Studio Code] and [python] are installed in your machine, you can run the examples by simply typing in your terminal: 
+Las notas del curso se pueden encontrar en [notas del curso 10 Días de Código con IA] y los ejemplos de código en [ejemplos de código de git hub]. Una vez que [Visual Studio Code] y [python] estén instalados en su máquina, puede ejecutar los ejemplos simplemente escribiendo en su terminal:
 
 ```python
-python <filename>.py
+python <nombre_archivo>.py
 ```
 
-## Cloning the Repository
+## Clonando el Repositorio
 
-If you wish you could install git on your vs code and clone this repository in your local machine.
+Si lo desea, puede instalar git en su vs code y clonar este repositorio en su máquina local.
 
-### Installing Bash in Visual Studio Code
+### Instalando Bash en Visual Studio Code
 
-If you're on Windows and want to use Bash in VS Code, you can install [Git for Windows](https://git-scm.com/download/win), which includes Git Bash.
+Si está en Windows y desea usar Bash en VS Code, puede instalar [Git para Windows](https://git-scm.com/download/win), que incluye Git Bash.
 
-1. Download and install Git for Windows.
-2. After installation, open VS Code.
-3. Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> and type `Terminal: Select Default Profile`.
-4. Choose `Git Bash` from the list.
+1. Descargue e instale Git para Windows.
+2. Después de la instalación, abra VS Code.
+3. Presione <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> y escriba `Terminal: Select Default Profile`.
+4. Elija `Git Bash` de la lista.
 
-Now, when you open a new terminal in VS Code, it will use Bash.
+Ahora, cuando abra una nueva terminal en VS Code, usará Bash.
 
-> **Note:** Installing Git for Windows will also install Git Bash. You do not need to install Git separately—Git Bash is included as part of the Git installation package.
+> **Nota:** La instalación de Git para Windows también instalará Git Bash. No necesita instalar Git por separado—Git Bash se incluye como parte del paquete de instalación de Git.
 
-### Create a virtual environmenta and activate
-A **virtual environment** in Python is an isolated workspace that allows you to install and manage packages separately from your global Python installation. This means each project can have its own dependencies, versions, and settings without interfering with other projects or the system Python.
+### Crear un entorno virtual y activarlo
+Un **entorno virtual** en Python es un espacio de trabajo aislado que le permite instalar y administrar paquetes por separado de su instalación global de Python. Esto significa que cada proyecto puede tener sus propias dependencias, versiones y configuraciones sin interferir con otros proyectos o el Python del sistema.
 
-**Why use a virtual environment?**
+**¿Por qué usar un entorno virtual?**
 
-- Isolation: Keeps project dependencies separate, avoiding conflicts between packages required by different projects.
-- Reproducibility: Makes it easier to share your project with others, since you can specify exactly which packages and versions are needed.
-Safety: Prevents accidental changes to system-wide Python packages.
+- Aislamiento: Mantiene las dependencias del proyecto separadas, evitando conflictos entre los paquetes requeridos por diferentes proyectos.
+- Reproducibilidad: Facilita compartir su proyecto con otros, ya que puede especificar exactamente qué paquetes y versiones se necesitan.
+- Seguridad: Evita cambios accidentales en los paquetes de Python de todo el sistema.
 
-Typical workflow:
-- Create a virtual environment for your project.
-- Activate it before working.
-- Install packages using pip—these go only into the virtual environment.
-- Deactivate when done.
+Flujo de trabajo típico:
+- Crear un entorno virtual para su proyecto.
+- Activarlo antes de trabajar.
+- Instalar paquetes usando pip—estos solo van al entorno virtual.
+- Desactivar cuando haya terminado.
 
-This approach is especially useful in collaborative or production settings, ensuring consistency and minimizing dependency issues.
+Este enfoque es especialmente útil en entornos colaborativos o de producción, asegurando la consistencia y minimizando los problemas de dependencia.
 
-To create a Python virtual environment, run the following command in your terminal:
+Para crear un entorno virtual de Python, ejecute el siguiente comando en su terminal:
 
 ```bash
 python -m venv venv
 ```
 
-This will create a new directory called `venv` containing the virtual environment.
+Esto creará un nuevo directorio llamado `venv` que contiene el entorno virtual.
 
-To activate the virtual environment:
+Para activar el entorno virtual:
 
-- On Windows:
+- En Windows:
   ```bash
   .\venv\Scripts\activate
   ```
-- On macOS/Linux/bash terminal:
+- En macOS/Linux/terminal bash:
   ```bash
   source venv/bin/activate
   ```
 
-Once activated, you can install packages using `pip` and they will be isolated to this environment.
+Una vez activado, puede instalar paquetes usando `pip` y estarán aislados en este entorno.
 
-To deactivate the Python virtual environment, simply run:
+Para desactivar el entorno virtual de Python, simplemente ejecute:
 
 ```bash
 deactivate
 ```
 
-This will return your terminal to the global Python environment.
+Esto devolverá su terminal al entorno global de Python.
 
 
-### Clone this repository
+### Clonar este repositorio
 
-To clone this repository to your local machine, open your terminal and run:
+Para clonar este repositorio en su máquina local, abra su terminal y ejecute:
 
 ```bash
 git clone https://github.com/StructuralWizard/10DaysOfCode.github.io.git
 ```
 
-This will create a local copy of the repository in your current directory.
+Esto creará una copia local del repositorio en su directorio actual.
 
-### Install the dependencies of this repository
-To install the dependencies listed in `requirements.txt`, make sure your virtual environment is activated, then run:
+### Instalar las dependencias de este repositorio
+Para instalar las dependencias enumeradas en `requirements.txt`, asegúrese de que su entorno virtual esté activado, luego ejecute:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-This will install all the required Python packages for the project.
+Esto instalará todos los paquetes de Python necesarios para el proyecto.
 
-### Run site in local server
-This site has been created using [Just the Docs] theme and the hosted in [GitHub Pages]. You can [Browse our documentation] for more information.
+### Ejecutar el sitio en un servidor local
+Este sitio ha sido creado usando el tema [Just the Docs] y alojado en [GitHub Pages]. Puede [Navegar por nuestra documentación] para obtener más información.
 
-To visualise the github site in the browser rather than editing its markdown you can run `bundle exec jekyll serve` from the main 10DaysOfCode folder where you have the _config.yml file.
+Para visualizar el sitio de github en el navegador en lugar de editar su markdown, puede ejecutar `bundle exec jekyll serve` desde la carpeta principal de 10DaysOfCode donde tiene el archivo _config.yml.
 
-Assuming [Jekyll] and [Bundler] are installed on your computer:
+Suponiendo que [Jekyll] y [Bundler] están instalados en su computadora:
 
-1.  Change your working directory to the root directory of your site.
+1.  Cambie su directorio de trabajo al directorio raíz de su sitio.
 
-2.  Run `bundle install`.
+2.  Ejecute `bundle install`.
 
-3.  Run `bundle exec jekyll serve` to build your site and preview it at `localhost:4000`.
+3.  Ejecute `bundle exec jekyll serve` para construir su sitio y previsualizarlo en `localhost:4000`.
 
-    The built site is stored in the directory `_site`.
+    El sitio construido se almacena en el directorio `_site`.
 
 
-Note: If you are using a Jekyll version less than 3.5.0, use the `gems` key instead of `plugins`.
+Nota: Si está utilizando una versión de Jekyll inferior a 3.5.0, use la clave `gems` en lugar de `plugins`.
 
 
 
