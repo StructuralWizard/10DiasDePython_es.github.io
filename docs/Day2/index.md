@@ -1,19 +1,19 @@
 ---
-title: Day 2 Python Intermediate - Objects
+title: Día 2 Python Intermedio - Objetos
 layout: default
 nav_order: 3
 ---
 
-# Day 2. Python Intermediate. 🏋️ Fitness & Diet Tracker
+# Día 2. Python Intermedio. 🏋️ Seguimiento de Fitness y Dieta
 {: .no_toc }
-In Day 1 we learnt the basic python functions that let process repetitive tasks and choices. Today we will a bit more advance and powerfull modes of managing information learning how to manipulate other files, working with objects and clashes and plotting data. 
+En el Día 1 aprendimos las funciones básicas de Python que nos permiten procesar tareas repetitivas y elecciones. Hoy avanzaremos un poco más y veremos modos más potentes de gestionar la información, aprendiendo a manipular otros archivos, trabajando con objetos y clases y trazando datos.
 
 
 ---
 
 <details open markdown="block">
   <summary>
-    Table of contents
+    Índice de contenidos
   </summary>
   {: .text-delta }
 1. TOC
@@ -22,71 +22,71 @@ In Day 1 we learnt the basic python functions that let process repetitive tasks 
 
 
 ---
-## 🧭 How is it explained? <a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 🧭 ¿Cómo se explica? <a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-This time we are going to build a fitness and diet tracker that will calculate the net calories everyday and plot the history in a chart. This command-line tool:
-- Logs workouts and meals
-- Reads and cleans CSV data
-- Performs data analysis
-- Visualizes trends using charts
-- Uses OOP for structured code
+Esta vez vamos a construir un seguimiento de fitness y dieta que calculará las calorías netas de cada día y trazará el historial en un gráfico. Esta herramienta de línea de comandos:
+- Registra entrenamientos y comidas
+- Lee y limpia datos CSV
+- Realiza análisis de datos
+- Visualiza tendencias usando gráficos
+- Usa POO para un código estructurado
 
-## 📦 Prerequisites, module installation and environment.<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-You will require:
+## 📦 Prerrequisitos, instalación de módulos y entorno.<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Necesitarás:
 - Python 3.x
-- pandas and matplotlib
-which you can install by running the command below in bash:
+- pandas y matplotlib
+que puedes instalar ejecutando el siguiente comando en bash:
 ```bash
 pip install pandas matplotlib
 ```
 
-## 🗂 **Step 1**: Prepare Your Data. <a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 🗂 **Paso 1**: Prepara Tus Datos. <a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-### 👉 Understanding File Structure 📁 and Paths in Python<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 Entendiendo la Estructura de Archivos 📁 y Rutas en Python<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-A **file structure** (also known as a **directory structure**) refers to how files and folders are organized on your computer. It's like a tree:
-- At the top is the **root** (e.g., C:\ in Windows or / in Unix/Linux).
-- Inside it are **folders/directories** (e.g., Documents, Desktop, etc.)
-- Folders can contain **files** (like .txt, .csv, .py) or **other folders** (subdirectories).
+Una **estructura de archivos** (también conocida como **estructura de directorios**) se refiere a cómo se organizan los archivos y carpetas en tu ordenador. Es como un árbol:
+- En la parte superior está la **raíz** (p. ej., C:\ en Windows o / en Unix/Linux).
+- Dentro de ella hay **carpetas/directorios** (p. ej., Documentos, Escritorio, etc.)
+- Las carpetas pueden contener **archivos** (como .txt, .csv, .py) u **otras carpetas** (subdirectorios).
 
-### 👉 We need file structures to **organize data, locate files,** and **build scalable applications**.<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 Necesitamos estructuras de archivos para **organizar datos, localizar archivos,** y **construir aplicaciones escalables**.<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-A file path is the address to a file or folder in the computer. There are two types:
-1. Absolute Path that Points to the exact location from the root and always starts from the drive or root directory.
+Una ruta de archivo es la dirección a un archivo o carpeta en el ordenador. Hay dos tipos:
+1. Ruta Absoluta que apunta a la ubicación exacta desde la raíz y siempre comienza desde la unidad o el directorio raíz.
 ```python
-"C:/Users/Alberto/Desktop/my_file.txt"  # Windows
-"/home/alberto/documents/my_file.txt"   # Linux/macOS
+"C:/Users/Alberto/Desktop/mi_archivo.txt"  # Windows
+"/home/alberto/documents/mi_archivo.txt"   # Linux/macOS
 ```
-1. Relative Path that points to a location relative to the current working directory.
+1. Ruta Relativa que apunta a una ubicación relativa al directorio de trabajo actual.
 ```python
-"data/my_file.txt"    # Means inside the folder 'data'
-"./my_file.txt"       # Current directory
-"../my_file.txt"      # One folder up
+"data/mi_archivo.txt"    # Significa dentro de la carpeta 'data'
+"./mi_archivo.txt"       # Directorio actual
+"../mi_archivo.txt"      # Una carpeta arriba
 ```
 
-Forward slash is used in Unix/macOS/Linux, and also in Python on all platforms. `\` Backslash is used in Windows. 
+La barra inclinada hacia adelante se usa en Unix/macOS/Linux, y también en Python en todas las plataformas. `\` La barra invertida se usa en Windows.
 
 {: .note }
->Best practice: Use forward slashes `/` in Python or use the `os.path` module for compatibility.
+>Mejor práctica: Usa barras inclinadas hacia adelante `/` en Python o usa el módulo `os.path` para compatibilidad.
 
-### 👉Python and the **OS Module**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉Python y el **Módulo OS**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-The os module helps interact with the file system reducing syntaxis errors are performing certain basic functions.
+El módulo `os` ayuda a interactuar con el sistema de archivos reduciendo errores de sintaxis y realizando ciertas funciones básicas.
 
 ```python
 import os
 
-print(os.getcwd()) # Get current directory
+print(os.getcwd()) # Obtener el directorio actual
 
-print(os.listdir(".")) # List files and folders in a directory
+print(os.listdir(".")) # Listar archivos y carpetas en un directorio
 
-file_path = os.path.join("data", "file.csv") # Join paths safely
+file_path = os.path.join("data", "file.csv") # Unir rutas de forma segura
 print(file_path)
 
-print(os.path.exists(file_path))# Check if path exists
+print(os.path.exists(file_path))# Comprobar si la ruta existe
 ```
 
-In the fitness tracker os is used to create the path to the input files:
+En el seguimiento de fitness, `os` se usa para crear la ruta a los archivos de entrada:
 ```python
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 WORKOUTS_FILE = os.path.join(DATA_DIR, 'workouts.csv')
@@ -94,9 +94,9 @@ MEALS_FILE = os.path.join(DATA_DIR, 'meals.csv')
 ```
 
 
-### 👉 **File structure** and **csv** files<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 **Estructura de archivos** y archivos **csv**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-For this example we will store the records of our workouts and meals in the csv files in the subfolder data. 
+Para este ejemplo, almacenaremos los registros de nuestros entrenamientos y comidas en los archivos csv en la subcarpeta `data`.
 
 
 ```kotlin
@@ -106,21 +106,21 @@ fitness_tracker/
 │   └── meals.csv
 └── fitness_tracker.py
 ```
-CSV stands for Comma-Separated Values. It's a plain text file used to store tabular data (like a spreadsheet or database) in a simple format.
+CSV significa Valores Separados por Comas. Es un archivo de texto plano usado para almacenar datos tabulares (como una hoja de cálculo o una base de datos) en un formato simple.
 
-Each row is a line in the file, and each column value is separated by a comma (,).
+Cada fila es una línea en el archivo, y cada valor de columna está separado por una coma (,).
 
-🔹 Key Formatting Rules
+🔹 Reglas Clave de Formato
 
-| Element         | Description                                           |
+| Elemento        | Descripción                                           |
 | --------------- | ----------------------------------------------------- |
-| **Comma (,)**   | Default separator between values                      |
-| **New Line**    | Separates rows                                        |
-| **First row**   | Often used as **header** (column names)               |
-| **Quotes ("")** | Used around fields that contain commas or line breaks |
-| **.csv**        | File extension for CSV files                          |
+| **Coma (,)**    | Separador por defecto entre valores                   |
+| **Nueva Línea** | Separa filas                                          |
+| **Primera fila**| A menudo se usa como **encabezado** (nombres de columna) |
+| **Comillas ("")**| Se usan alrededor de campos que contienen comas o saltos de línea |
+| **.csv**        | Extensión de archivo para archivos CSV                |
 
-For this example the csv files are: 
+Para este ejemplo, los archivos csv son:
 
 <details markdown="block">
   <summary>
@@ -159,183 +159,183 @@ date,meal_type,food,calories
 ```
 </details>
 
-## 🐍 **Step 2**: Create fitness_tracker.py. **Classes** and **Object-Oriented Programming**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 🐍 **Paso 2**: Crear fitness_tracker.py. **Clases** y **Programación Orientada a Objetos**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
 
-Let's dive into **Object-Oriented Programming (OOP)** with a simple analogy!
+¡Vamos a sumergirnos en la **Programación Orientada a Objetos (POO)** con una analogía simple!
 
-### 👉 What is **Object-Oriented Programming** (OOP)?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 ¿Qué es la **Programación Orientada a Objetos** (POO)?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Imagine you want to build a fleet of different types of vehicles: cars, motorcycles, and trucks. Instead of listing every single detail for every single vehicle you build (e.g., "This car has 4 wheels, a red color, can accelerate, can brake. This other car has 4 wheels, a blue color, can accelerate, can brake..."), OOP helps you organize your design.
+Imagina que quieres construir una flota de diferentes tipos de vehículos: coches, motocicletas y camiones. En lugar de listar cada detalle para cada vehículo que construyes (p. ej., "Este coche tiene 4 ruedas, color rojo, puede acelerar, puede frenar. Este otro coche tiene 4 ruedas, color azul, puede acelerar, puede frenar..."), la POO te ayuda a organizar tu diseño.
 
-**OOP is a way of organizing your code around "objects" rather than just functions and data**. Think of it like a blueprint system for creating things.
+**La POO es una forma de organizar tu código en torno a "objetos" en lugar de solo funciones y datos**. Piénsalo como un sistema de planos para crear cosas.
 
-### 👉 What are **Classes**?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 ¿Qué son las **Clases**?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Let's continue with the "Vehicle Factory" analogy:
+Continuemos con la analogía de la "Fábrica de Vehículos":
 
-**Classes** are like Blueprints: Before you build any vehicle, you need a design. You'd have a Car Blueprint, a Motorcycle Blueprint, and a Truck Blueprint. These blueprints define what characteristics (like number of wheels, color) and behaviors (like accelerating, braking) all cars, motorcycles, or trucks will have.
-**Objects** are like the Actual Vehicles: Once you have a blueprint, you can build actual vehicles from it. So, a specific red car you just built, a blue motorcycle, or a green truck are all objects. Each one is a unique **instance** created from its respective blueprint.
+**Las clases** son como los Planos: Antes de construir cualquier vehículo, necesitas un diseño. Tendrías un Plano de Coche, un Plano de Motocicleta y un Plano de Camión. Estos planos definen qué características (como número de ruedas, color) y comportamientos (como acelerar, frenar) tendrán todos los coches, motocicletas o camiones.
+**Los objetos** son como los Vehículos Reales: Una vez que tienes un plano, puedes construir vehículos reales a partir de él. Así, un coche rojo específico que acabas de construir, una motocicleta azul o un camión verde son todos objetos. Cada uno es una **instancia** única creada a partir de su respectivo plano.
 
-### 👉 **Why** is OOP Useful and When?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 **¿Por qué** es útil la POO y Cuándo?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-OOP is useful for:
-- *Organization and Modularity*: It helps you break down complex problems into smaller, manageable pieces (objects). This makes your code easier to understand, maintain, and debug. Instead of one giant instruction manual for everything, you have separate blueprints for cars, motorcycles, etc.
-- *Reusability*: You can reuse your blueprints (classes) to create many similar objects. You don't need to redraw the car blueprint every time you want to build a new car. You just use the existing one.
-- *Flexibility and Maintainability*: If you need to change how all cars accelerate, you just modify the "Car Blueprint." All cars built from that blueprint will then have the updated acceleration behavior. If you decide all cars should now have self-driving capabilities, you update the Car Blueprint, and all new cars you build from it will have that feature.
-- *Handling Complexity*: As your programs grow, OOP helps manage the complexity by encapsulating related data and behavior together.
+La POO es útil para:
+- *Organización y Modularidad*: Te ayuda a descomponer problemas complejos en piezas más pequeñas y manejables (objetos). Esto hace que tu código sea más fácil de entender, mantener y depurar. En lugar de un manual de instrucciones gigante para todo, tienes planos separados para coches, motocicletas, etc.
+- *Reutilización*: Puedes reutilizar tus planos (clases) para crear muchos objetos similares. No necesitas redibujar el plano del coche cada vez que quieras construir un coche nuevo. Simplemente usas el existente.
+- *Flexibilidad y Mantenibilidad*: Si necesitas cambiar cómo aceleran todos los coches, solo modificas el "Plano de Coche". Todos los coches construidos a partir de ese plano tendrán entonces el comportamiento de aceleración actualizado. Si decides que todos los coches ahora deberían tener capacidades de conducción autónoma, actualizas el Plano de Coche, y todos los coches nuevos que construyas a partir de él tendrán esa característica.
+- *Manejo de la Complejidad*: A medida que tus programas crecen, la POO ayuda a gestionar la complejidad encapsulando datos y comportamientos relacionados juntos.
 
-### 👉 **When** is it useful?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 **¿Cuándo** es útil?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-OOP shines when you're dealing with:
-- *Complex systems*: Games, simulations, large business applications.
-- *Programs with many similar "things"*: Think of a user management system (many "user" objects), an e-commerce site (many "product" objects), or a graphical user interface (many "button," "text field," "window" objects).
-- *When you want to collaborate on code*: Different developers can work on different parts of the system (different classes) more easily.
+La POO brilla cuando estás tratando con:
+- *Sistemas complejos*: Juegos, simulaciones, grandes aplicaciones empresariales.
+- *Programas con muchas "cosas" similares*: Piensa en un sistema de gestión de usuarios (muchos objetos "usuario"), un sitio de comercio electrónico (muchos objetos "producto") o una interfaz gráfica de usuario (muchos objetos "botón", "campo de texto", "ventana").
+- *Cuando quieres colaborar en el código*: Diferentes desarrolladores pueden trabajar en diferentes partes del sistema (diferentes clases) más fácilmente.
 
-### 👉 What are **Methods**, and **Attributes**?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 ¿Qué son los **Métodos** y **Atributos**?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Let's go back to our vehicle analogy:
-- *Objects*: As explained, these are the actual "things" created from a blueprint (class). For example, my_red_car, johns_motorcycle.
-- *Attributes* (Properties/Data): These are the characteristics or data associated with an object. They are like the details on the blueprint that describe what the vehicle is.For a Car object, attributes might be color (e.g., "red"), number_of_wheels (e.g., 4), brand (e.g., "Toyota").
-- *Methods* (Behaviors/Functions): These are the actions an object can perform. They are like the instructions on the blueprint that describe what the vehicle can do. For a Car object, methods might be accelerate(), brake(), turn_on_headlights().
+Volvamos a nuestra analogía de vehículos:
+- *Objetos*: Como se explicó, estas son las "cosas" reales creadas a partir de un plano (clase). Por ejemplo, mi_coche_rojo, la_moto_de_juan.
+- *Atributos* (Propiedades/Datos): Estas son las características o datos asociados con un objeto. Son como los detalles en el plano que describen qué es el vehículo. Para un objeto Coche, los atributos podrían ser color (p. ej., "rojo"), numero_de_ruedas (p. ej., 4), marca (p. ej., "Toyota").
+- *Métodos* (Comportamientos/Funciones): Estas son las acciones que un objeto puede realizar. Son como las instrucciones en el plano que describen qué puede hacer el vehículo. Para un objeto Coche, los métodos podrían ser acelerar(), frenar(), encender_luces().
 
-How do you create an object out of a class in Python?
+¿Cómo se crea un objeto a partir de una clase en Python?
 
-First, you define a class (our blueprint):
+Primero, defines una clase (nuestro plano):
 ```python
-class Car:
-    # This is the blueprint for a Car
+class Coche:
+    # Este es el plano para un Coche
 
-    def __init__(self, color, brand, num_wheels=4):
-        # This is a special method called the "constructor".
-        # It's like the initial assembly line for a new car.
-        # 'self' refers to the specific car object being created.
-        self.color = color         # Set the color attribute for this car
-        self.brand = brand         # Set the brand attribute for this car
-        self.num_wheels = num_wheels # Set the number of wheels (default to 4)
+    def __init__(self, color, marca, num_ruedas=4):
+        # Este es un método especial llamado "constructor".
+        # Es como la línea de montaje inicial para un coche nuevo.
+        # 'self' se refiere al objeto coche específico que se está creando.
+        self.color = color         # Establece el atributo de color para este coche
+        self.marca = marca         # Establece el atributo de marca para este coche
+        self.num_ruedas = num_ruedas # Establece el número de ruedas (por defecto 4)
 
-    def accelerate(self):
-        # This is a method (behavior) for a Car object
-        print(f"The {self.color} {self.brand} car is accelerating!")
+    def acelerar(self):
+        # Este es un método (comportamiento) para un objeto Coche
+        print(f"¡El coche {self.color} {self.marca} está acelerando!")
 
-    def brake(self):
-        # Another method
-        print(f"The {self.color} {self.brand} car is braking.")
+    def frenar(self):
+        # Otro método
+        print(f"El coche {self.color} {self.marca} está frenando.")
 ```
 
-Now, to create an object (a specific car) from this Car class:
+Ahora, para crear un objeto (un coche específico) a partir de esta clase Coche:
 
 ```python
-# Creating an object (a specific car) from the Car class
-my_red_car = Car("red", "Toyota")
-johns_blue_car = Car("blue", "Honda")
-my_red_car.accelerate()
-my_red_car.brake()
+# Creando un objeto (un coche específico) de la clase Coche
+mi_coche_rojo = Coche("rojo", "Toyota")
+coche_azul_de_juan = Coche("azul", "Honda")
+mi_coche_rojo.acelerar()
+mi_coche_rojo.frenar()
 ```
-which will return
+lo que devolverá
 ```bash
-$ python car_factory.py
-The red Toyota car is accelerating!
-The red Toyota car is braking.
+$ python fabrica_de_coches.py
+¡El coche rojo Toyota está acelerando!
+El coche rojo Toyota está frenando.
 ```
 
-To access or set attributes, you use the dot notation (.) to access or set attributes:
+Para acceder o establecer atributos, usas la notación de punto (.) para acceder o establecer atributos:
 ```python
-# Accessing attributes
-print(f"My car's color: {my_red_car.color}")
-print(f"John's car's brand: {johns_blue_car.brand}")
+# Accediendo a los atributos
+print(f"El color de mi coche: {mi_coche_rojo.color}")
+print(f"La marca del coche de Juan: {coche_azul_de_juan.marca}")
 
-# Setting (modifying) an attribute
-my_red_car.color = "yellow"
-print(f"My car's new color: {my_red_car.color}")
+# Estableciendo (modificando) un atributo
+mi_coche_rojo.color = "amarillo"
+print(f"El nuevo color de mi coche: {mi_coche_rojo.color}")
 ```
 
-### 👉 What is **Class Inheritance**?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 ¿Qué es la **Herencia de Clases**?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Inheritance is a powerful OOP concept that allows you to create new classes based on existing ones. Think of it as creating more specialized blueprints from general ones.
+La herencia es un concepto poderoso de la POO que te permite crear nuevas clases basadas en las existentes. Piénsalo como crear planos más especializados a partir de unos generales.
 
-You have a general "Vehicle Blueprint." From this, you can create a "Car Blueprint," a "Motorcycle Blueprint," and a "Truck Blueprint." A Car is a Vehicle, a Motorcycle is a Vehicle. The Car blueprint automatically inherits all the general characteristics and behaviors of a Vehicle (like having wheels, being able to move) and then adds its own specific ones (like having doors, specific seating).
+Tienes un "Plano de Vehículo" general. A partir de este, puedes crear un "Plano de Coche", un "Plano de Motocicleta" y un "Plano de Camión". Un Coche es un Vehículo, una Motocicleta es un Vehículo. El plano de Coche hereda automáticamente todas las características y comportamientos generales de un Vehículo (como tener ruedas, poder moverse) y luego añade los suyos específicos (como tener puertas, asientos específicos).
 
-Inheritance promotes code reuse and helps model real-world relationships.
+La herencia promueve la reutilización del código y ayuda a modelar relaciones del mundo real.
 
-In Python:
+En Python:
 
 ```python
-class Vehicle: # General blueprint
-    def __init__(self, num_wheels, top_speed):
-        self.num_wheels = num_wheels
-        self.top_speed = top_speed
+class Vehiculo: # Plano general
+    def __init__(self, num_ruedas, velocidad_maxima):
+        self.num_ruedas = num_ruedas
+        self.velocidad_maxima = velocidad_maxima
 
-    def move(self):
-        print("Vehicle is moving.")
+    def moverse(self):
+        print("El vehículo se está moviendo.")
 
-class Car(Vehicle): # Car inherits from Vehicle
-    def __init__(self, color, brand):
-        super().__init__(4, 200) # Call the parent (Vehicle) constructor
+class Coche(Vehiculo): # Coche hereda de Vehiculo
+    def __init__(self, color, marca):
+        super().__init__(4, 200) # Llama al constructor del padre (Vehiculo)
         self.color = color
-        self.brand = brand
+        self.marca = marca
 
-    def accelerate(self): # Car has its own specific method
-        print(f"The {self.color} {self.brand} car is accelerating!")
+    def acelerar(self): # Coche tiene su propio método específico
+        print(f"¡El coche {self.color} {self.marca} está acelerando!")
 
-class Motorcycle(Vehicle): # Motorcycle also inherits from Vehicle
-    def __init__(self, engine_size):
-        super().__init__(2, 180) # Call the parent (Vehicle) constructor
-        self.engine_size = engine_size
+class Motocicleta(Vehiculo): # Motocicleta también hereda de Vehiculo
+    def __init__(self, cilindrada):
+        super().__init__(2, 180) # Llama al constructor del padre (Vehiculo)
+        self.cilindrada = cilindrada
 
-    def wheelie(self):
-        print(f"The motorcycle is doing a wheelie!")
+    def hacer_un_caballito(self):
+        print(f"¡La motocicleta está haciendo un caballito!")
 
-my_car = Car("green", "BMW")
-my_car.move() # Car can use the Vehicle's move method
-my_car.accelerate()
+mi_coche = Coche("verde", "BMW")
+mi_coche.moverse() # Coche puede usar el método moverse de Vehiculo
+mi_coche.acelerar()
 
-my_motorcycle = Motorcycle("1000cc")
-my_motorcycle.move()
-my_motorcycle.wheelie()
+mi_moto = Motocicleta("1000cc")
+mi_moto.moverse()
+mi_moto.hacer_un_caballito()
 ```
 
-### 👉 **Creating** Meals, Workouts and Date **classes**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 **Creando** las clases Comidas, Entrenamientos y Fecha<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-In our fitness tracker, we will be using three classes, one for the dates, another for the workouts and another for the meals. Each of the columns in workouts and meals will be a different attribute. 
+En nuestro seguimiento de fitness, usaremos tres clases, una para las fechas, otra para los entrenamientos y otra para las comidas. Cada una de las columnas en entrenamientos y comidas será un atributo diferente.
 
 ```python
 class LogEntry:
     def __init__(self, date):
         self.date = date
 
-class Workout(LogEntry): # Workout inherits from LogEntry
+class Workout(LogEntry): # Workout hereda de LogEntry
     def __init__(self, date, workout_type, duration, calories):
-        super().__init__(date) # Call the parent (Logentry)
+        super().__init__(date) # Llama al padre (Logentry)
         self.workout_type = workout_type
         self.duration = duration
         self.calories = calories
 
-class Meal(LogEntry): # Meal inherits from LogEntry
+class Meal(LogEntry): # Meal hereda de LogEntry
     def __init__(self, date, meal_type, food, calories):
-        super().__init__(date) # Call the parent (Logentry)
+        super().__init__(date) # Llama al padre (Logentry)
         self.meal_type = meal_type
         self.food = food
         self.calories = calories
 ```
 
-## 📄 **Step 3**: Read and Clean **CSV Files**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-### 👉 Manual Reading with CSV Module<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 📄 **Paso 3**: Leer y Limpiar **Archivos CSV**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 Lectura Manual con el Módulo CSV<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-There are two main routes to load the csv file. The first one is using the module csv and load it onto a list. In doing so, we use the `strip()` and the `int()` methods. 
-The `strip()` method is used to remove leading and trailing whitespace (spaces, tabs, newlines) from a string. This helps preventing Common Data Entry Issues caused by human or automated data entry, Accurate Comparisons/Lookups and Errors when applying to another type conversion for example with `int()`.
-The `int()` function is used to convert a string or a float into an integer so that we can do numerical operations with it.
+Hay dos rutas principales para cargar el archivo csv. La primera es usando el módulo `csv` y cargarlo en una lista. Al hacerlo, usamos los métodos `strip()` e `int()`.
+El método `strip()` se usa para eliminar los espacios en blanco iniciales y finales (espacios, tabulaciones, saltos de línea) de una cadena. Esto ayuda a prevenir problemas comunes de entrada de datos causados por la entrada de datos humana o automatizada, comparaciones/búsquedas precisas y errores al aplicar otra conversión de tipo, por ejemplo con `int()`.
+La función `int()` se usa para convertir una cadena o un flotante en un entero para que podamos realizar operaciones numéricas con él.
 
 ```python
 import csv
 
 def read_workouts_manual(file_path):
     workouts = []
-    with open(file_path, newline='') as csvfile: # Opens and automatically closes when finished
-        reader = csv.reader(csvfile) # Creates an object that can iterate over lines
-        next(reader)  # Skip header
+    with open(file_path, newline='') as csvfile: # Abre y cierra automáticamente al terminar
+        reader = csv.reader(csvfile) # Crea un objeto que puede iterar sobre las líneas
+        next(reader)  # Omitir encabezado
         for row in reader:
-            # Create a Workout object for each row and add to workouts list
+            # Crea un objeto Workout para cada fila y lo añade a la lista de workouts
             date = row[0].strip()
             workout_type = row[1].strip()
             duration = int(row[2].strip())
@@ -345,50 +345,50 @@ def read_workouts_manual(file_path):
 
 ```
 
-### 👉 Using Pandas<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 Usando Pandas<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-The second module that is used to load csv files and work with their information is pandas. Pandas loads the csv file information into a pandas dataframe.  A **Dataframe** is two-dimensional labeled data structure with columns of potentially different types. This is the primary Pandas data structure and is essentially a table or spreadsheet. 
+El segundo módulo que se usa para cargar archivos csv y trabajar con su información es pandas. Pandas carga la información del archivo csv en un dataframe de pandas. Un **Dataframe** es una estructura de datos etiquetada bidimensional con columnas de tipos potencialmente diferentes. Esta es la estructura de datos principal de Pandas y es esencialmente una tabla u hoja de cálculo.
 
-You can access a dataframe cell by doing `df.loc[row_label, column_label]` and a column by referring to its heading as below.
+Puedes acceder a una celda de un dataframe haciendo `df.loc[etiqueta_fila, etiqueta_columna]` y a una columna refiriéndote a su encabezado como se muestra a continuación.
 ```python
 import pandas as pd
-data = {'Name': ['Alice', 'Bob', 'Charlie','Andres'],
-        'Age': [25, 30, 35, 45],
-        'City': ['New York', 'London', 'Paris','Madrid']}
+data = {'Nombre': ['Alice', 'Bob', 'Charlie','Andres'],
+        'Edad': [25, 30, 35, 45],
+        'Ciudad': ['Nueva York', 'Londres', 'París','Madrid']}
 df = pd.DataFrame(data)
 
-cell_value_default = df.loc[0, 'Name'] # Accessing row 0, column 'Name'
-print(f"Cell at index 0, column 'Name' (default index): {cell_value_default}")
+valor_celda_defecto = df.loc[0, 'Nombre'] # Accediendo a la fila 0, columna 'Nombre'
+print(f"Celda en el índice 0, columna 'Nombre' (índice por defecto): {valor_celda_defecto}")
 
-names_column = df['Name'] # Access the 'Name' column
-print("The 'Name' column:")
-print(names_column)
+columna_nombres = df['Nombre'] # Accede a la columna 'Nombre'
+print("La columna 'Nombre':")
+print(columna_nombres)
 
 ```
 
-Below an example on how to access the rows. 
+A continuación un ejemplo de cómo acceder a las filas.
 
 ```python
-# Access the row at integer position 1 (the second row)
-row_pos_1 = df.iloc[1]
-print("Row at integer position 1:")
-print(row_pos_1)
+# Accede a la fila en la posición entera 1 (la segunda fila)
+fila_pos_1 = df.iloc[1]
+print("Fila en la posición entera 1:")
+print(fila_pos_1)
 print("-" * 40)
 
-# Access multiple rows using a list of integer positions
-multiple_rows_pos = df.iloc[[0, 2]] # First and third rows
-print("Rows at integer positions 0 and 2:")
-print(multiple_rows_pos)
+# Accede a múltiples filas usando una lista de posiciones enteras
+multiples_filas_pos = df.iloc[[0, 2]] # Primera y tercera fila
+print("Filas en las posiciones enteras 0 y 2:")
+print(multiples_filas_pos)
 print("-" * 40)
 
-# Access a slice of rows using integer positions (exclusive of end)
-slice_of_rows_pos = df.iloc[1:4] # From position 1 up to (but not including) 4
-print("Slice of rows from position 1 to 3:")
-print(slice_of_rows_pos)
+# Accede a un trozo de filas usando posiciones enteras (exclusivo del final)
+trozo_de_filas_pos = df.iloc[1:4] # Desde la posición 1 hasta (pero sin incluir) 4
+print("Trozo de filas desde la posición 1 a la 3:")
+print(trozo_de_filas_pos)
 print("-" * 40)
 ```
 
-In our fitness tracker, the pandas library is used in the function `load_and_clean_data()`. The method `.fillna` is used to replace the cells with Not a Number NaN data.
+En nuestro seguimiento de fitness, la biblioteca pandas se usa en la función `load_and_clean_data()`. El método `.fillna` se usa para reemplazar las celdas con datos NaN (Not a Number).
 
 ```python
 import pandas as pd
@@ -400,32 +400,32 @@ def load_and_clean_data():
     df_workouts['date'] = pd.to_datetime(df_workouts['date'])
     df_meals['date'] = pd.to_datetime(df_meals['date'])
 
-    # Fill any missing values in workout data with zeros (e.g., missing durations or calories)
+    # Rellena cualquier valor faltante en los datos de entrenamiento con ceros (p. ej., duraciones o calorías faltantes)
     df_workouts.fillna(0, inplace=True)
-    # Fill any missing values in meal data with "Unknown" (e.g., missing food descriptions)
+    # Rellena cualquier valor faltante en los datos de comidas con "Desconocido" (p. ej., descripciones de alimentos faltantes)
     df_meals.fillna("Unknown", inplace=True)
 
     return df_workouts, df_meals
 ```
 
-## 📊 **Step 4**: **Summarize** and **Merge Data**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 📊 **Paso 4**: **Resumir** y **Fusionar Datos**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Now is time to combine the workouts and meals using the pandas library to optain the net calories. To do that, we follow this sequence:
+Ahora es el momento de combinar los entrenamientos y las comidas usando la biblioteca pandas para obtener las calorías netas. Para ello, seguimos esta secuencia:
 
-### 👉 **Group rows** `df_meals.groupby('date')`:<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 **Agrupar filas** `df_meals.groupby('date')`:<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-This is the first and most crucial part. The `groupby()` method is used to group rows together based on unique values in one or more columns.
-In this case, `df_meals` will be grouped by the unique values in the 'date' column. Conceptually, pandas will create separate "groups" for each unique date. For our example, there would be a group for '2025-06-01', one for '2025-06-02', and one for '2025-06-03'.
+Esta es la primera y más crucial parte. El método `groupby()` se usa para agrupar filas basadas en valores únicos en una o más columnas.
+En este caso, `df_meals` se agrupará por los valores únicos en la columna 'date'. Conceptualmente, pandas creará "grupos" separados para cada fecha única. Para nuestro ejemplo, habría un grupo para '2025-06-01', uno para '2025-06-02' y otro para '2025-06-03'.
 
-### 👉 **Select a column** `['calories']`:<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 **Seleccionar una columna** `['calories']`:<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-After grouping, you typically want to perform an operation on a specific column within each group. `['calories']` selects the 'calories' column from each of these created groups. This means that for each date group, we are now only interested in the calorie values.
+Después de agrupar, normalmente quieres realizar una operación en una columna específica dentro de cada grupo. `['calories']` selecciona la columna 'calories' de cada uno de estos grupos creados. Esto significa que para cada grupo de fechas, ahora solo nos interesan los valores de las calorías.
 
-### 👉 Calculate **subtotals** `.sum()`:<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 Calcular **subtotales** `.sum()`:<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-This is an aggregation function. After selecting the 'calories_burned' column for each group, `.sum()` calculates the total sum of 'calories' for each respective group (i.e., for each unique date).
+Esta es una función de agregación. Después de seleccionar la columna 'calories_burned' para cada grupo, `.sum()` calcula la suma total de 'calories' para cada grupo respectivo (es decir, para cada fecha única).
 
-At this point, the output would be a pandas Series with the 'date' as the index and the sum of 'calories' as the values. It would look something like this:
+En este punto, la salida sería una Serie de pandas con la 'date' como índice y la suma de 'calories' como valores. Se vería algo así:
 
 ```bash
 date
@@ -435,13 +435,13 @@ date
 Name: calories_burned, dtype: int64
 ```
 
-### 👉 **Re-Numbering** the rows of the selection `.reset_index()`:<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### 👉 **Re-Numerar** las filas de la selección `.reset_index()`:<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-As you can see from the previous step, after `sum()`, 'date' is the index of the resulting Series.
+Como puedes ver en el paso anterior, después de `sum()`, 'date' es el índice de la Serie resultante.
 
-`.reset_index()` converts the index back into a regular column. This is often desired for cleaner dataframes where you want the grouped column ('date' in this case) to be a proper column rather than the DataFrame's index.
+`.reset_index()` convierte el índice de nuevo en una columna regular. Esto a menudo se desea para dataframes más limpios donde quieres que la columna agrupada ('date' en este caso) sea una columna propiamente dicha en lugar del índice del DataFrame.
 
-After `reset_index()`, the output will be a new DataFrame:
+Después de `reset_index()`, la salida será un nuevo DataFrame:
 
 | date       | calories |
 |:-----------|:----------------|
@@ -450,9 +450,9 @@ After `reset_index()`, the output will be a new DataFrame:
 | 2025-06-03 | 1250            |
 
 
-After that the two pandas dataframes for workouts and meals are merged and a new column with the `'net_calories'` is created.
+Después de eso, los dos dataframes de pandas para entrenamientos y comidas se fusionan y se crea una nueva columna con las `'net_calories'`.
 
-The actual function that summarises the data in our fitness tracker is:
+La función real que resume los datos en nuestro seguimiento de fitness es:
 
 ```python
 def summarize_data(df_workouts, df_meals):
@@ -465,64 +465,64 @@ def summarize_data(df_workouts, df_meals):
 ```
 
 
-## 📈 **Step 5**: Visualize with **matplotlib**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 📈 **Paso 5**: Visualizar con **matplotlib**<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-The last function that we are going to write is the one that creates the plot of the workout, meal and net calories for every registered day. To do this, we simply load the matplotlib library and create a plot assembling each part as shown in the code below. 
+La última función que vamos a escribir es la que crea el gráfico del entrenamiento, la comida y las calorías netas para cada día registrado. Para hacer esto, simplemente cargamos la biblioteca matplotlib y creamos un gráfico ensamblando cada parte como se muestra en el código a continuación.
 
 ```python
 import matplotlib.pyplot as plt
 
 def plot_fitness_trends(combined_df):
-    # Create a new figure with specified size (width: 16 inches, height: 10 inches)
-    # This creates a larger plot that is easier to read and analyze
+    # Crea una nueva figura con el tamaño especificado (ancho: 16 pulgadas, alto: 10 pulgadas)
+    # Esto crea un gráfico más grande que es más fácil de leer y analizar
     plt.figure(figsize=(16, 10)) 
     
-    # Plot calories consumed with circular markers
-    plt.plot(combined_df['date'], combined_df['calories'], label="Calories Consumed", marker='o')
+    # Traza las calorías consumidas con marcadores circulares
+    plt.plot(combined_df['date'], combined_df['calories'], label="Calorías Consumidas", marker='o')
     
-    # Plot calories burned with x markers for visual distinction
-    plt.plot(combined_df['date'], combined_df['calories_burned'], label="Calories Burned", marker='x')
+    # Traza las calorías quemadas con marcadores x para distinción visual
+    plt.plot(combined_df['date'], combined_df['calories_burned'], label="Calorías Quemadas", marker='x')
     
-    # Plot net calories (consumed - burned) with dashed line style
-    # This shows the caloric balance for each day
-    plt.plot(combined_df['date'], combined_df['net_calories'], label="Net Calories", linestyle='--')
+    # Traza las calorías netas (consumidas - quemadas) con estilo de línea discontinua
+    # Esto muestra el balance calórico de cada día
+    plt.plot(combined_df['date'], combined_df['net_calories'], label="Calorías Netas", linestyle='--')
 
-    # Calculate and plot a 2-day rolling average of net calories
-    # This smooths out daily fluctuations and shows the overall trend
+    # Calcula y traza una media móvil de 2 días de las calorías netas
+    # Esto suaviza las fluctuaciones diarias y muestra la tendencia general
     rolling = combined_df['net_calories'].rolling(window=2).mean()
-    plt.plot(combined_df['date'], rolling, label="Rolling Mean (Net)", linestyle='dotted')
+    plt.plot(combined_df['date'], rolling, label="Media Móvil (Neta)", linestyle='dotted')
 
-    # Add axis labels with increased font size for better readability
-    plt.xlabel('Date', fontsize=14)
-    plt.ylabel('Calories', fontsize=14)
+    # Añade etiquetas a los ejes con un tamaño de fuente aumentado para una mejor legibilidad
+    plt.xlabel('Fecha', fontsize=14)
+    plt.ylabel('Calorías', fontsize=14)
     
-    # Format the x-axis to display dates in YYYY-MM-DD format
-    # This ensures consistent date representation on the chart
+    # Formatea el eje x para mostrar las fechas en formato AAAA-MM-DD
+    # Esto asegura una representación de fecha consistente en el gráfico
     date_format = DateFormatter('%Y-%m-%d')
     plt.gca().xaxis.set_major_formatter(date_format)
     
-    # Rotate x-axis labels by 45 degrees to prevent overlap and increase font size
+    # Rota las etiquetas del eje x 45 grados para evitar solapamientos y aumenta el tamaño de la fuente
     plt.xticks(rotation=45, fontsize=12)
     plt.yticks(fontsize=12)
     
-    plt.title('Fitness Tracker Summary', fontsize=16) # Add a descriptive title to the chart with larger font
+    plt.title('Resumen del Seguimiento de Fitness', fontsize=16) # Añade un título descriptivo al gráfico con una fuente más grande
     
-    plt.legend() # Add a legend to identify each line in the plot
+    plt.legend() # Añade una leyenda para identificar cada línea en el gráfico
     
-    plt.grid(True) # Add a grid to make it easier to read values from the chart
+    plt.grid(True) # Añade una cuadrícula para facilitar la lectura de valores del gráfico
     
-    plt.tight_layout() # Adjust layout to ensure all elements fit without overlapping
+    plt.tight_layout() # Ajusta el diseño para asegurar que todos los elementos quepan sin solaparse
     
-    plt.show() # Display the completed chart
+    plt.show() # Muestra el gráfico completado
 ```
 
-The resulting chart with the Consumed and Burned calories as well as the Net ones looks like:
+El gráfico resultante con las calorías Consumidas y Quemadas, así como las Netas, se ve así:
 
-![Consumed and Burned Calories history](Matplotlib_calories_figure.png)
+![Historial de calorías consumidas y quemadas](Matplotlib_calories_figure.png)
 
-## ▶️ **Step 6**: Main Program<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## ▶️ **Paso 6**: Programa Principal<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Following best practices, we have left the main function to specify the flow of the program. This make it easier to review and to update the code. 
+Siguiendo las mejores prácticas, hemos dejado la función principal para especificar el flujo del programa. Esto facilita la revisión y actualización del código.
 
 ```python
 def main():
@@ -536,9 +536,9 @@ if __name__ == "__main__":
 ```
 
 
-## 🧪 Practice Challenges<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-Try modifying or extending the project:
-- Add weight tracking.
-- Categorize meal types (e.g., “High Protein”).
-- Export results to a new CSV file.
-- Highlight days with a calorie surplus.
+## 🧪 Desafíos de Práctica<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Intenta modificar o extender el proyecto:
+- Añade seguimiento de peso.
+- Categoriza los tipos de comida (p. ej., “Alta en Proteínas”).
+- Exporta los resultados a un nuevo archivo CSV.
+- Resalta los días con un superávit calórico.

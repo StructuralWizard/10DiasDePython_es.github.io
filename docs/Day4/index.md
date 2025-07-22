@@ -1,21 +1,21 @@
 ---
-title: Day 4 Web Foundations HTML, CSS, Bootstrap & Web Design
+title: Día 4 Fundamentos Web HTML, CSS, Bootstrap y Diseño Web
 layout: default
 nav_order: 5
 has_children: false
 nav_exclude: false
 ---
 
-# Day 4. Web Foundations. 🕸️ HTML, CSS, Bootstrap & Web Design
+# Día 4. Fundamentos Web. 🕸️ HTML, CSS, Bootstrap y Diseño Web
 {: .no_toc }
 
-Welcome to Day 4! Today, you’ll build a solid foundation in web development by learning how the internet works, the essentials of HTML and CSS, and how to use Bootstrap for rapid, beautiful web design. We’ll also cover the basics of web design theory to help you create websites people will love.
+¡Bienvenido al Día 4! Hoy, construirás una base sólida en el desarrollo web aprendiendo cómo funciona Internet, los fundamentos de HTML y CSS, y cómo usar Bootstrap para un diseño web rápido y atractivo. También cubriremos los conceptos básicos de la teoría del diseño web para ayudarte a crear sitios web que a la gente le encantarán.
 
 ---
 
 <details open markdown="block">
   <summary>
-    Table of contents
+    Índice de contenidos
   </summary>
   {: .text-delta }
 1. TOC
@@ -24,154 +24,153 @@ Welcome to Day 4! Today, you’ll build a solid foundation in web development by
 
 ---
 
-## 🌐 How Does the Internet Actually Work?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 🌐 ¿Cómo funciona realmente Internet?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Before building websites, it’s important to understand how the internet connects users and servers.
+Antes de construir sitios web, es importante entender cómo Internet conecta a los usuarios y los servidores.
 
-- **Internet**: A [global network of computers](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work) communicating via protocols (TCP/IP).
-- **Websites**: Hosted on servers, accessed by clients (browsers) via [URLs](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL) (Uniform Resource Locator).
-- **HTTP/HTTPS**: Protocols for transferring web data.
-- **DNS** ([Domain Name System](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name)): Translates human-friendly domain names (like google.com) into IP addresses.
+- **Internet**: Una [red global de ordenadores](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work) que se comunican a través de protocolos (TCP/IP).
+- **Sitios web**: Alojados en servidores, a los que acceden los clientes (navegadores) a través de [URLs](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL) (Localizador Uniforme de Recursos).
+- **HTTP/HTTPS**: Protocolos para transferir datos web.
+- **DNS** ([Sistema de Nombres de Dominio](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name)): Traduce nombres de dominio amigables para los humanos (como google.com) en direcciones IP.
 
-**How Websites Work:**
-1. You type a URL in your browser.
-2. The browser asks a DNS server for the IP address.
-3. The browser sends an HTTP request to the server.
-4. The server responds with HTML (for elements), CSS (format), JS (actions), images, etc.
-5. The browser (Chrome, Firefox, Edge, Safari) renders the page.
+**Cómo funcionan los sitios web:**
+1. Escribes una URL en tu navegador.
+2. El navegador solicita a un servidor DNS la dirección IP.
+3. El navegador envía una solicitud HTTP al servidor.
+4. El servidor responde con HTML (para elementos), CSS (formato), JS (acciones), imágenes, etc.
+5. El navegador (Chrome, Firefox, Edge, Safari) renderiza la página.
 
-when you deploy a website and assign a domain to an IP address at the DNS server. DNS servers run 24/7 but they update DNS-IP pairs once or twice a day only.
+Cuando despliegas un sitio web y asignas un dominio a una dirección IP en el servidor DNS. Los servidores DNS funcionan 24/7 pero actualizan los pares DNS-IP solo una o dos veces al día.
 
-**Inspecting Websites**
+**Inspeccionando Sitios Web**
 
-The files that are received by the browser can be reviewed with DevTools (F12) in Chrome to inspect and modify HTML, CSS live. You can also right click over an element and then click on inspect and it takes you to the piece of code that you want to check. 
+Los archivos que recibe el navegador se pueden revisar con las Herramientas de Desarrollo (F12) en Chrome para inspeccionar y modificar HTML y CSS en vivo. También puedes hacer clic con el botón derecho sobre un elemento y luego hacer clic en inspeccionar y te llevará a la parte del código que quieres revisar.
 
-To do a test right click in the title `Inspecting Websites` and click in inspect. 
+Para hacer una prueba, haz clic con el botón derecho en el título `Inspeccionando Sitios Web` y haz clic en inspeccionar.
 
-![Inspect_window_Chrome](Inspect_window_Chrome.png)
+![Ventana de inspección de Chrome](Inspect_window_Chrome.png)
 
-The browser has a set of tools for inspecting elements (the html code), styles (the CSS code), a terminal to directly execute code or see in what order and how long does it take to download and run the code from the server. You can also recorde actions, or load extensions. The browser has many more possibilities than what it looks at first.
+El navegador tiene un conjunto de herramientas para inspeccionar elementos (el código html), estilos (el código CSS), una terminal para ejecutar código directamente o ver en qué orden y cuánto tiempo tarda en descargar y ejecutar el código del servidor. También puedes grabar acciones o cargar extensiones. El navegador tiene muchas más posibilidades de las que parece a primera vista.
 
-![Editing HTML in browser](Editing_HTML_in_browser.gif)
+![Edición de HTML en el navegador](Editing_HTML_in_browser.gif)
 
 ---
 
 
-## 📝 HTML: The Structure of the Web<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## 📝 HTML: La Estructura de la Web<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-### What is HTML?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### ¿Qué es HTML?<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-- **HTML (HyperText Markup Language)** is the standard language for creating web pages that can be rendered by most browsers. It structures content using **elements** (tags) such as `<title>My First Webpage</title>` in a static non-formatted fashion. 
-Generally tags have an open tag such as `<details></details>`, but some tags don’t need a closing tag, e.g. `<img />` for images, `<br>` for new line, `<hr>` for a horizontal line.
+- **HTML (HyperText Markup Language)** es el lenguaje estándar para crear páginas web que pueden ser renderizadas por la mayoría de los navegadores. Estructura el contenido utilizando **elementos** (etiquetas) como `<title>Mi Primera Página Web</title>` de una manera estática y sin formato.
+Generalmente las etiquetas tienen una etiqueta de apertura como `<details></details>`, pero algunas etiquetas no necesitan una etiqueta de cierre, p. ej. `<img />` para imágenes, `<br>` para nueva línea, `<hr>` para una línea horizontal.
 
-### HTML Boilerplate<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### Plantilla HTML<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Every HTML page starts with a basic structure:
+Toda página HTML comienza con una estructura básica:
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My First Webpage</title>
+  <title>Mi Primera Página Web</title>
 </head>
 <body>
-  <!-- Content goes here --> 
-   Hello World!
+  <!-- El contenido va aquí -->
+   ¡Hola Mundo!
 </body>
 </html>
 ```
 
-### Headings, Paragraphs, and Lists<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-The [most basic elements](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems) are headings or titles (there are 7 of them), paragraphs and lists. You can find the full list of elements in [W3Schools](https://www.w3schools.com/html/default.asp)
+### Encabezados, Párrafos y Listas<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Los [elementos más básicos](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems) son los encabezados o títulos (hay 7 de ellos), párrafos y listas. Puedes encontrar la lista completa de elementos en [W3Schools](https://www.w3schools.com/html/default.asp)
 
-Try and play with the code below in [W3Schools html web testing](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic)
+Prueba y juega con el código de abajo en la [prueba web de html de W3Schools](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic)
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My First Webpage</title>
+  <title>Mi Primera Página Web</title>
 </head>
 <body>
-  <h1>Main Heading</h1>
-  <h2>Subheading</h2>
-  <p>This is a paragraph of text.</p>
+  <h1>Encabezado Principal</h1>
+  <h2>Subencabezado</h2>
+  <p>Este es un párrafo de texto.</p>
 
   <ul>
-    <li>Unordered list item</li>
+    <li>Elemento de lista no ordenada</li>
   </ul>
   <ol>
-    <li>Ordered list item</li>
+    <li>Elemento de lista ordenada</li>
   </ol>
 </body>
 </html>
-
 ```
 
-### Anchor and Image Elements<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-Anchor elements are used to create links. Images are included with the tag `<img src="image file">`. It is recommended to include a description for accessibility. 
+### Elementos de Ancla e Imagen<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+Los elementos de ancla se utilizan para crear enlaces. Las imágenes se incluyen con la etiqueta `<img src="archivo de imagen">`. Se recomienda incluir una descripción por accesibilidad.
 
 ```html
-<a href="https://www.example.com">Visit Example</a>
-<img src="image.jpg" alt="Description">
+<a href="https://www.example.com">Visitar Ejemplo</a>
+<img src="image.jpg" alt="Descripción">
 ```
 
-### Nesting and Indentation<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### Anidamiento e Indentación<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-HTML elements can be nested. It is recommended to write them with proper indentation improves readability.
+Los elementos HTML se pueden anidar. Se recomienda escribirlos con una indentación adecuada para mejorar la legibilidad.
 
 ```html
 <ul>
   <li>
-    <a href="#">Nested Link</a>
+    <a href="#">Enlace Anidado</a>
   </li>
 </ul>
 ```
 
-### Forms<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### Formularios<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Forms are used to collect user input on a web page. Each form can have labels, input fields, and placeholders to guide the user as well as buttons to submit the information.
+Los formularios se utilizan para recopilar la entrada del usuario en una página web. Cada formulario puede tener etiquetas, campos de entrada y marcadores de posición para guiar al usuario, así como botones para enviar la información.
 
-Example:
+Ejemplo:
 ```html
 <form>
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" placeholder="Enter your name">
-  <button type="submit">Send</button>
+  <label for="name">Nombre:</label>
+  <input type="text" id="name" name="name" placeholder="Introduce tu nombre">
+  <button type="submit">Enviar</button>
 </form>
 ```
 
-### Styles<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### Estilos<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-You can style HTML elements inline using the `style` attribute directly in the tag. This is called inline styling. For example, you can change the font size, text alignment, color, and more.
+Puedes dar estilo a los elementos HTML en línea usando el atributo `style` directamente en la etiqueta. Esto se llama estilo en línea. Por ejemplo, puedes cambiar el tamaño de la fuente, la alineación del texto, el color y más.
 
-Example:
+Ejemplo:
 ```html
-<p style="font-size:18px; text-align:center; color:blue; font-family:Arial;">This is a styled paragraph.</p>
+<p style="font-size:18px; text-align:center; color:blue; font-family:Arial;">Este es un párrafo con estilo.</p>
 ```
 
-Instead of asigning tab by tag the styles, which would be messy and take a long time, tags are assigned to classes and or IDs and then the styles for the classes or IDs are specified in a CSS file as it is explained later on. 
+En lugar de asignar los estilos etiqueta por etiqueta, lo que sería desordenado y llevaría mucho tiempo, las etiquetas se asignan a clases y/o IDs y luego los estilos para las clases o IDs se especifican en un archivo CSS como se explica más adelante.
 
 
-### HTML Elements with IDs and Classes<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### Elementos HTML con IDs y Clases<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-Both IDs and classes are attributes that can be added to HTML elements to make them selectable for CSS styling or JavaScript manipulation. The key differences:
+Tanto los IDs como las clases son atributos que se pueden agregar a los elementos HTML para que sean seleccionables para el estilo CSS o la manipulación de JavaScript. Las diferencias clave:
 
-- **ID**: Must be unique on the page (only one element should have a specific ID)
-- **Class**: Can be reused across multiple elements
+- **ID**: Debe ser único en la página (solo un elemento debe tener un ID específico)
+- **Clase**: Se puede reutilizar en múltiples elementos
 
 ```html
-<h2 id="welcome-title" class="section-title">Welcome to My Website</h2>
-<p id="intro-text" class="content-paragraph">This paragraph has both an ID and a class. 
-The ID "intro-text" can only be used once on this page, while the "content-paragraph" 
-class can be applied to multiple paragraph elements.</p>
+<h2 id="welcome-title" class="section-title">Bienvenido a Mi Sitio Web</h2>
+<p id="intro-text" class="content-paragraph">Este párrafo tiene tanto un ID como una clase.
+El ID "intro-text" solo se puede usar una vez en esta página, mientras que la clase "content-paragraph"
+se puede aplicar a múltiples elementos de párrafo.</p>
 ```
 
-In CSS, you would select these elements using:
+En CSS, seleccionarías estos elementos usando:
 ```css
-/* Select by ID (uses # symbol) */
+/* Seleccionar por ID (usa el símbolo #) */
 #welcome-title {
   color: navy;
   font-size: 28px;
@@ -181,7 +180,7 @@ In CSS, you would select these elements using:
   font-style: italic;
 }
 
-/* Select by class (uses . symbol) */
+/* Seleccionar por clase (usa el símbolo .) */
 .section-title {
   border-bottom: 2px solid #ccc;
   padding-bottom: 10px;
@@ -196,418 +195,20 @@ In CSS, you would select these elements using:
 
 
 ### Divs<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-The <div> HTML element is a generic container for flow content. It's a "division" or "section" of a web page. They are used to group other HTML elements together. 
+El elemento HTML `<div>` es un contenedor genérico para contenido de flujo. Es una "división" o "sección" de una página web. Se utilizan para agrupar otros elementos HTML.
 
-### Full html template<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+### Plantilla HTML completa<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
 <details markdown="block">
   <summary>
-    For a full showcase view of all types of HTML elements see the code below. 
+    Para una vista de exhibición completa de todos los tipos de elementos HTML, vea el código a continuación.
   </summary>
 
-This can be visualised in [W3Schools html web testing](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic)
+Esto se puede visualizar en [Prueba web de html de W3Schools](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic)
 
 {% raw %}
 ```html
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Elements Showcase</title>
-    <!-- Tailwind CSS CDN for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-            color: #374151; /* Dark gray text */
-        }
-    </style>
-</head>
-<body class="p-4 sm:p-8 md:p-12 lg:p-16">
-    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-6 sm:p-8 md:p-10 lg:p-12">
-
-        <!-- Header Section -->
-        <header class="mb-12 text-center">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-600 mb-4 rounded-lg p-2">HTML Elements Showcase</h1>
-            <p class="text-lg sm:text-xl text-gray-700">A comprehensive template demonstrating common HTML elements with Tailwind CSS.</p>
-        </header>
-
-        <!-- Navigation Section -->
-        <nav class="mb-12">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">Navigation</h2>
-            <ul class="flex flex-wrap gap-4 justify-center">
-                <li><a href="#typography" class="text-blue-600 hover:text-blue-800 text-lg font-medium p-2 rounded-md hover:bg-blue-50 transition-colors duration-200">Typography</a></li>
-                <li><a href="#links-images" class="text-blue-600 hover:text-blue-800 text-lg font-medium p-2 rounded-md hover:bg-blue-50 transition-colors duration-200">Links & Images</a></li>
-                <li><a href="#lists" class="text-blue-600 hover:text-blue-800 text-lg font-medium p-2 rounded-md hover:bg-blue-50 transition-colors duration-200">Lists</a></li>
-                <li><a href="#tables" class="text-blue-600 hover:text-blue-800 text-lg font-medium p-2 rounded-md hover:bg-blue-50 transition-colors duration-200">Tables</a></li>
-                <li><a href="#forms" class="text-blue-600 hover:text-blue-800 text-lg font-medium p-2 rounded-md hover:bg-blue-50 transition-colors duration-200">Forms</a></li>
-                <li><a href="#media" class="text-blue-600 hover:text-blue-800 text-lg font-medium p-2 rounded-md hover:bg-blue-50 transition-colors duration-200">Media</a></li>
-                <li><a href="#interactive" class="text-blue-600 hover:text-blue-800 text-lg font-medium p-2 rounded-md hover:bg-blue-50 transition-colors duration-200">Interactive</a></li>
-            </ul>
-        </nav>
-
-        <!-- Main Content Area -->
-        <main>
-            <!-- Typography Section -->
-            <section id="typography" class="mb-12 p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">Typography</h2>
-
-                <!-- Headings -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Headings</h3>
-                <p class="mb-4">HTML provides six levels of headings, from `h1` (most important) to `h6` (least important).</p>
-                <h1 class="text-4xl font-extrabold text-blue-700 mb-2">Heading 1 (h1) - Main Title</h1>
-                <h2 class="text-3xl font-bold text-blue-600 mb-2">Heading 2 (h2) - Section Title</h2>
-                <h3 class="text-2xl font-semibold text-blue-500 mb-2">Heading 3 (h3) - Sub-section Title</h3>
-                <h4 class="text-xl font-medium text-blue-400 mb-2">Heading 4 (h4) - Minor Heading</h4>
-                <h5 class="text-lg font-normal text-blue-300 mb-2">Heading 5 (h5) - Smaller Heading</h5>
-                <h6 class="text-base font-light text-blue-200 mb-6">Heading 6 (h6) - Least Important Heading</h6>
-
-                <!-- Paragraphs -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Paragraphs</h3>
-                <p class="mb-4 text-gray-600 leading-relaxed">
-                    This is a standard paragraph (`&lt;p&gt;`) of text. It's used for blocks of content.
-                    We can add some <strong class="font-bold text-gray-800">strong (bold) text</strong> and
-                    <em>emphasized (italic) text</em> using `&lt;strong&gt;` and `&lt;em&gt;` tags.
-                </p>
-                <p class="mb-6 text-gray-600 leading-relaxed">
-                    Here's another paragraph demonstrating various inline text formatting options.
-                    You can <mark class="bg-yellow-200 px-1 rounded">highlight text</mark> using `&lt;mark&gt;`.
-                    <del class="line-through text-red-500">Deleted text</del> (`&lt;del&gt;`) and
-                    <ins class="underline text-green-600">inserted text</ins> (`&lt;ins&gt;`) are also possible.
-                    For scientific notation, you might use H<sub class="align-sub">2</sub>O (`&lt;sub&gt;`) or
-                    E=mc<sup class="align-super">2</sup> (`&lt;sup&gt;`).
-                </p>
-            </section>
-
-            <!-- Links and Images Section -->
-            <section id="links-images" class="mb-12 p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">Links & Images</h2>
-
-                <!-- Links -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Links</h3>
-                <p class="mb-4">
-                    This is an external link:
-                    <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"
-                       class="text-blue-600 hover:text-blue-800 underline font-medium transition-colors duration-200">
-                        Visit Google
-                    </a>.
-                    Links (`&lt;a&gt;`) are crucial for navigation. The `target="_blank"` attribute opens the link in a new tab, and `rel="noopener noreferrer"` is a security best practice for external links.
-                </p>
-
-                <!-- Images -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Images</h3>
-                <p class="mb-4">
-                    An image (`&lt;img&gt;`) displayed below. The `alt` attribute is important for accessibility.
-                    The `onerror` attribute provides a fallback in case the image fails to load.
-                </p>
-                <div class="flex justify-center mb-6">
-                    <img src="https://placehold.co/400x200/ADD8E6/000000?text=Placeholder+Image"
-                         alt="A simple placeholder image"
-                         class="max-w-full h-auto rounded-lg shadow-md border-2 border-gray-200"
-                         onerror="this.onerror=null;this.src='https://placehold.co/400x200/FF0000/FFFFFF?text=Image+Load+Error';">
-                </div>
-            </section>
-
-            <!-- Lists Section -->
-            <section id="lists" class="mb-12 p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">Lists</h2>
-
-                <!-- Unordered List -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Unordered List (`&lt;ul&gt;`)</h3>
-                <p class="mb-2">Items in an unordered list are typically marked with bullet points.</p>
-                <ul class="list-disc list-inside mb-6 pl-4 text-gray-700">
-                    <li class="mb-1">Item One</li>
-                    <li class="mb-1">Item Two
-                        <ul class="list-circle list-inside mt-1 pl-4">
-                            <li class="mb-1">Nested Item A</li>
-                            <li class="mb-1">Nested Item B</li>
-                        </ul>
-                    </li>
-                    <li class="mb-1">Item Three</li>
-                </ul>
-
-                <!-- Ordered List -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Ordered List (`&lt;ol&gt;`)</h3>
-                <p class="mb-2">Items in an ordered list are typically numbered.</p>
-                <ol class="list-decimal list-inside mb-6 pl-4 text-gray-700">
-                    <li class="mb-1">First step</li>
-                    <li class="mb-1">Second step</li>
-                    <li class="mb-1">Third step</li>
-                </ol>
-
-                <!-- Description List -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Description List (`&lt;dl&gt;`)</h3>
-                <p class="mb-2">A list of terms and their descriptions.</p>
-                <dl class="mb-6 text-gray-700">
-                    <dt class="font-semibold text-gray-800 mt-2">HTML</dt>
-                    <dd class="ml-6 mb-1">HyperText Markup Language: The standard markup language for creating web pages.</dd>
-                    <dt class="font-semibold text-gray-800 mt-2">CSS</dt>
-                    <dd class="ml-6 mb-1">Cascading Style Sheets: A stylesheet language used to describe the presentation of a document written in HTML.</dd>
-                    <dt class="font-semibold text-gray-800 mt-2">JavaScript</dt>
-                    <dd class="ml-6 mb-1">A programming language that enables interactive web pages.</dd>
-                </dl>
-            </section>
-
-            <!-- Tables Section -->
-            <section id="tables" class="mb-12 p-6 bg-gray-50 rounded-lg shadow-md overflow-x-auto">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">Tables</h2>
-                <p class="mb-4">Tables (`&lt;table&gt;`) are used to display tabular data.</p>
-                <table class="w-full border-collapse text-left rounded-lg overflow-hidden shadow-md">
-                    <thead class="bg-blue-600 text-white">
-                        <tr>
-                            <th class="py-3 px-4 border-b border-blue-700">Name</th>
-                            <th class="py-3 px-4 border-b border-blue-700">Age</th>
-                            <th class="py-3 px-4 border-b border-blue-700">City</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                        <tr>
-                            <td class="py-2 px-4 border-b border-gray-200">John Doe</td>
-                            <td class="py-2 px-4 border-b border-gray-200">30</td>
-                            <td class="py-2 px-4 border-b border-gray-200">New York</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-gray-200">Jane Smith</td>
-                            <td class="py-2 px-4 border-b border-gray-200">24</td>
-                            <td class="py-2 px-4 border-b border-gray-200">Los Angeles</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-gray-200">Peter Jones</td>
-                            <td class="py-2 px-4 border-b border-gray-200">45</td>
-                            <td class="py-2 px-4 border-b border-gray-200">Chicago</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <!-- Forms Section -->
-            <section id="forms" class="mb-12 p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">Forms</h2>
-                <p class="mb-4">Forms (`&lt;form&gt;`) are used to collect user input.</p>
-
-                <form class="space-y-6">
-                    <!-- Text Input -->
-                    <div>
-                        <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username:</label>
-                        <input type="text" id="username" name="username" placeholder="Enter your username"
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                               required>
-                    </div>
-
-                    <!-- Email Input -->
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="you@example.com"
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-
-                    <!-- Password Input -->
-                    <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password:</label>
-                        <input type="password" id="password" name="password" placeholder="••••••••"
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                               minlength="8">
-                    </div>
-
-                    <!-- Number Input -->
-                    <div>
-                        <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1" max="10"
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-
-                    <!-- Textarea -->
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message:</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Your message here..."
-                                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
-                    </div>
-
-                    <!-- Select (Dropdown) -->
-                    <div>
-                        <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country:</label>
-                        <select id="country" name="country"
-                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white">
-                            <option value="">--Please choose an option--</option>
-                            <option value="usa">United States</option>
-                            <option value="can">Canada</option>
-                            <option value="mex">Mexico</option>
-                        </select>
-                    </div>
-
-                    <!-- Checkbox -->
-                    <div class="flex items-center">
-                        <input type="checkbox" id="newsletter" name="newsletter"
-                               class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                        <label for="newsletter" class="ml-2 block text-sm text-gray-900">Subscribe to newsletter</label>
-                    </div>
-
-                    <!-- Radio Buttons (Fieldset for grouping) -->
-                    <fieldset class="border border-gray-300 p-4 rounded-md">
-                        <legend class="text-base font-medium text-gray-900">Favorite Color:</legend>
-                        <div class="mt-2 space-y-2">
-                            <div class="flex items-center">
-                                <input type="radio" id="color_red" name="fav_color" value="red"
-                                       class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                <label for="color_red" class="ml-2 block text-sm text-gray-900">Red</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input type="radio" id="color_blue" name="fav_color" value="blue" checked
-                                       class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                <label for="color_blue" class="ml-2 block text-sm text-gray-900">Blue</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input type="radio" id="color_green" name="fav_color" value="green"
-                                       class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                <label for="color_green" class="ml-2 block text-sm text-gray-900">Green</label>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <!-- File Input -->
-                    <div>
-                        <label for="profile_pic" class="block text-sm font-medium text-gray-700 mb-1">Upload Profile Picture:</label>
-                        <input type="file" id="profile_pic" name="profile_pic" accept="image/*"
-                               class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                    </div>
-
-                    <!-- Range Input -->
-                    <div>
-                        <label for="volume" class="block text-sm font-medium text-gray-700 mb-1">Volume:</label>
-                        <input type="range" id="volume" name="volume" min="0" max="100" value="50"
-                               class="mt-1 block w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg">
-                    </div>
-
-                    <!-- Date Input -->
-                    <div>
-                        <label for="event_date" class="block text-sm font-medium text-gray-700 mb-1">Event Date:</label>
-                        <input type="date" id="event_date" name="event_date"
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
-
-                    <!-- Color Input -->
-                    <div>
-                        <label for="fav_color_picker" class="block text-sm font-medium text-gray-700 mb-1">Choose your favorite color:</label>
-                        <input type="color" id="fav_color_picker" name="fav_color_picker" value="#4A90E2"
-                               class="mt-1 block w-24 h-10 border border-gray-300 rounded-md cursor-pointer">
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div>
-                        <button type="submit"
-                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
-                            Submit Form
-                        </button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- Media Section -->
-            <section id="media" class="mb-12 p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">Media</h2>
-
-                <!-- Audio -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Audio (`&lt;audio&gt;`)</h3>
-                <p class="mb-4">Embed audio content. Note: A real audio file URL would be needed here.</p>
-                <div class="flex justify-center mb-6">
-                    <audio controls class="w-full max-w-lg rounded-lg shadow-md bg-gray-200 p-2">
-                        <!-- Replace with a valid audio source -->
-                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
-
-                <!-- Video -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Video (`&lt;video&gt;`)</h3>
-                <p class="mb-4">Embed video content. Note: A real video file URL would be needed here.</p>
-                <div class="flex justify-center mb-6">
-                    <video controls width="640" height="360" poster="https://placehold.co/640x360/A0A0A0/FFFFFF?text=Video+Placeholder"
-                           class="max-w-full h-auto rounded-lg shadow-md border-2 border-gray-200">
-                        <!-- Replace with a valid video source -->
-                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </section>
-
-            <!-- Interactive Elements Section -->
-            <section id="interactive" class="mb-12 p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">Interactive Elements</h2>
-
-                <!-- Details/Summary -->
-                <h3 class="text-2xl font-bold text-gray-700 mb-3">Details and Summary (`&lt;details&gt;`, `&lt;summary&gt;`)</h3>
-                <p class="mb-4">Provides an on-demand disclosure widget that the user can open and close.</p>
-                <details class="bg-white border border-gray-300 rounded-md p-4 shadow-sm cursor-pointer hover:bg-gray-100 transition-colors duration-200">
-                    <summary class="font-semibold text-lg text-blue-700">Click to reveal more information</summary>
-                    <div class="mt-3 text-gray-700 leading-relaxed">
-                        <p>This content is hidden by default and is revealed when the summary is clicked.</p>
-                        <p>It's useful for FAQs, accordions, or hiding less important details.</p>
-                    </div>
-                </details>
-            </section>
-        </main>
-
-        <!-- Aside Section (for tangential content) -->
-        <aside class="mb-12 p-6 bg-blue-50 rounded-lg shadow-md border-l-4 border-blue-300">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-300 rounded-lg">About This Template</h2>
-            <p class="text-gray-700 leading-relaxed">
-                This template serves as a quick reference for common HTML elements. Each section demonstrates a different category of tags and how they can be styled using utility classes from <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline font-medium">Tailwind CSS</a>.
-            </p>
-            <p class="mt-3 text-gray-700 leading-relaxed">
-                Remember to apply semantic HTML for better accessibility and SEO.
-            </p>
-        </aside>
-
-        <!-- Footer Section -->
-        <footer class="text-center text-gray-600 mt-12 pt-6 border-t-2 border-gray-200">
-            <p>&copy; 2025 HTML Elements Showcase. All rights reserved.</p>
-            <p class="text-sm mt-2">
-                Created with love using HTML and Tailwind CSS.
-            </p>
-        </footer>
-
-    </div>
-
-    <!-- JavaScript Example (Optional) -->
-    <script>
-        // A simple JavaScript example demonstrating a console log
-        // This script runs after the HTML document is loaded.
-        console.log("HTML Elements Showcase Loaded!");
-
-        // Example of adding an event listener to a button (if you had one)
-        document.addEventListener('DOMContentLoaded', () => {
-            const submitButton = document.querySelector('button[type="submit"]');
-            if (submitButton) {
-                submitButton.addEventListener('click', (event) => {
-                    // Prevent default form submission for demonstration
-                    event.preventDefault();
-                    console.log('Form submission attempted!');
-                    // In a real application, you would handle form data here,
-                    // e.g., send it to a server using fetch API.
-                    // For now, we'll just show a simple message in the console.
-                });
-            }
-        });
-    </script>
-</body>
-</html>
-```
-{% endraw %}
-
-</details>
-
-<details>
-  <summary>
-    Full element showcase rendered below.
-  </summary>
-You can use F12 or right click inspect to see the html code for each element.
-
-{% raw %}
-```
 <html lang="en">
 <head>
     <meta charset="UTF-8">

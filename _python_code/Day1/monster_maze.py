@@ -1,71 +1,71 @@
 import random
 
-# Constants
-ROOMS = ["Hall", "Kitchen", "Library", "Dungeon", "Garden"]
-ITEMS = ["sword", "potion", "shield"]
-MONSTERS = ["Goblin", "Troll", "Skeleton"]
+# Constantes
+ROOMS = ["Salón", "Cocina", "Biblioteca", "Mazmorra", "Jardín"]
+ITEMS = ["espada", "poción", "escudo"]
+MONSTERS = ["Goblin", "Trol", "Esqueleto"]
 
-# Global variable
+# Variable global
 found_key = False
 
 def print_welcome():
-    """Prints the welcome message with ASCII art."""
+    """Imprime el mensaje de bienvenida con arte ASCII."""
     print("""
-    🧟‍♂️ MONSTER MAZE 🧟‍♀️
-    Escape the maze, defeat monsters, and find the key!
-    """)  # String manipulation and printing
+    🧟‍♂️ LABERINTO DE MONSTRUOS 🧟‍♀️
+    ¡Escapa del laberinto, derrota a los monstruos y encuentra la llave!
+    """)  # Manipulación e impresión de cadenas
 
 def create_player(name):
-    """Returns a new player dictionary."""
+    """Devuelve un nuevo diccionario de jugador."""
     return {
         "name": name,
         "health": 100,
         "inventory": [],
-        "location": random.choice(ROOMS)  # Random module
+        "location": random.choice(ROOMS)  # Módulo random
     }
 
 def describe_room(room):
-    """Describes the current room."""
-    print(f"\nYou are now in the {room}.")
-    if random.random() < 0.4:  # Conditional statement
+    """Describe la habitación actual."""
+    print(f"\nAhora estás en la {room}.")
+    if random.random() < 0.4:  # Declaración condicional
         item = random.choice(ITEMS)
-        print(f"You found a {item}!")
+        print(f"¡Has encontrado un {item}!")
         return item
     return None
 
 def encounter_monster(player):
-    """Random monster encounter with chance of fight."""
+    """Encuentro aleatorio con un monstruo con posibilidad de luchar."""
     if random.random() < 0.3:
         monster = random.choice(MONSTERS)
-        print(f"\n⚔️ A wild {monster} appears!")
-        if "sword" in player["inventory"]:
-            print("You defeat it with your sword!")
+        print(f"\n⚔️ ¡Aparece un {monster} salvaje!")
+        if "espada" in player["inventory"]:
+            print("¡Lo derrotas con tu espada!")
         else:
             player["health"] -= 20
-            print("You have no sword! You got hurt!")
-            print(f"Health: {player['health']}")
+            print("¡No tienes espada! ¡Has resultado herido!")
+            print(f"Salud: {player['health']}")
             if player["health"] <= 0:
-                print("💀 You have died. Game Over.")
+                print("💀 Has muerto. Fin del juego.")
                 exit()
 
 def move_to_new_room(player):
-    """Moves the player to a new random room."""
+    """Mueve al jugador a una nueva habitación aleatoria."""
     previous = player["location"]
     player["location"] = random.choice([r for r in ROOMS if r != previous])
 
 def check_for_key(player):
-    """Checks if the player finds the key."""
+    """Comprueba si el jugador encuentra la llave."""
     global found_key
     if not found_key and random.random() < 0.2:
         found_key = True
-        print("🔑 You found the magic key!")
-        player["inventory"].append("magic key")
+        print("🔑 ¡Has encontrado la llave mágica!")
+        player["inventory"].append("llave mágica")
 
 def game_loop(player):
-    """Main game loop using recursion."""
+    """Bucle principal del juego usando recursividad."""
     if found_key:
-        print(f"\n🎉 Congratulations, {player['name']}! You escaped the maze!")
-        return # End the game if key is found
+        print(f"\n🎉 ¡Felicidades, {player['name']}! ¡Has escapado del laberinto!")
+        return # Termina el juego si se encuentra la llave
 
     item = describe_room(player["location"])
     if item:
@@ -74,25 +74,25 @@ def game_loop(player):
     encounter_monster(player)
     check_for_key(player)
 
-    # While loop & string formatting with f-strings
+    # Bucle while y formateo de cadenas con f-strings
     while True:
-        choice = input("\nDo you want to move to another room? (yes/no): ").lower()
-        if choice in ["yes", "y"]:
+        choice = input("\n¿Quieres moverte a otra habitación? (sí/no): ").lower()
+        if choice in ["sí", "s"]:
             move_to_new_room(player)
-            game_loop(player)  # Recursion
+            game_loop(player)  # Recursividad
             break
         elif choice in ["no", "n"]:
-            print("🛌 You chose to rest. Game Over.")
+            print("🛌 Has elegido descansar. Fin del juego.")
             break
         else:
-            print("Please answer yes or no.")
+            print("Por favor, responde sí o no.")
 
-# Main program
+# Programa principal
 def main():
-    """Starts the game."""
+    """Inicia el juego."""
     print_welcome()
-    name = input("Enter your name, adventurer: ")
-    player = create_player(name)  # Function with inputs/outputs
+    name = input("Introduce tu nombre, aventurero: ")
+    player = create_player(name)  # Función con entradas/salidas
     game_loop(player)
 
 if __name__ == "__main__":

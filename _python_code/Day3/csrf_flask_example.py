@@ -4,25 +4,25 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import secrets
 
-# Basic Flask app
+# Aplicación básica de Flask
 app = Flask(__name__)
-app.config['SECRET_KEY'] = secrets.token_hex(16)  # Needed for CSRF protection
+app.config['SECRET_KEY'] = secrets.token_hex(16)  # Necesario para la protección CSRF
 
-# Define form with CSRF protection
+# Definir formulario con protección CSRF
 class NameForm(FlaskForm):
-    name = StringField('Your Name', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    name = StringField('Tu Nombre', validators=[DataRequired()])
+    submit = SubmitField('Enviar')
 
-# Route to display and handle form
+# Ruta para mostrar y manejar el formulario
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = NameForm()
     if form.validate_on_submit():
-        flash(f"Hello, {form.name.data}!", "success")
+        flash(f"¡Hola, {form.name.data}!", "success")
         return redirect('/')
     return render_template_string('''
         <!doctype html>
-        <title>CSRF Example</title>
+        <title>Ejemplo de CSRF</title>
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% for category, message in messages %}
             <div style="color:green">{{ message }}</div>
