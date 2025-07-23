@@ -14,7 +14,7 @@ nav_order: 7
 
 ¿Listo para transformar datos crudos en información accionable? Esta lección integral te lleva a través del flujo de trabajo completo de la ciencia de datos utilizando las bibliotecas más potentes de Python. Aprenderás a cargar, limpiar, visualizar y analizar datos, culminando en la construcción de tu primer modelo de aprendizaje automático. **Aprendizaje continuo**: mantente actualizado con nuevas técnicas y herramientas.
 
-También descubriremos un recurso gratuito increíble proporcionado por Google: <a href="https://colab.research.google.com/" target="_blank">Colab</a>. En lugar de usar VS Code en tu propia máquina, usaremos <a href="https://colab.research.google.com/" target="_blank">Colab</a>, que también viene con su propio agente Gemini. La lección de hoy se puede seguir en este sitio de GitHub y en <a href="https://drive.google.com/file/d/1DTIbZdG36giPL1STjiOqQ08dD2CmFSOY/view?usp=sharing" target="_blank">mi Colab</a> donde puedes ver tanto el código como la salida. Puedes copiar el colab a tu propia cuenta y jugar con él.
+También descubriremos un recurso gratuito increíble proporcionado por Google: <a href="https://colab.research.google.com/" target="_blank">Colab</a>. En lugar de usar VS Code en tu propia máquina, usaremos <a href="https://colab.research.google.com/" target="_blank">Colab</a>, que también viene con su propio agente Gemini. La lección de hoy se puede seguir en este sitio de GitHub y en <a href="https://colab.research.google.com/drive/1ZqgxRsyZY0WPNqDZefRPHqpN8nNU-51a?usp=sharing" target="_blank">mi Colab</a> donde puedes ver tanto el código como la salida. Puedes copiar el colab a tu propia cuenta y jugar con él.
 
 ---
 
