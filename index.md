@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Inicio
 layout: home
 nav_order: 1
 ---
@@ -52,7 +52,7 @@ Este desafío es perfecto si:
 
 ## 👇 ¿Listo para Empezar?
 
-Dirígete a [**Día 1: Entiende tu código. Aventura en Python: 🧟‍♂️ Laberinto de Monstruos**] o suscríbete a los [10 Días de Python] y empecemos.
+Dirígete a [**Día 1: Entiende tu código. Aventura en Python: 🧟‍♂️ Laberinto de Monstruos**] o suscríbete a los [10 Días de Python con IA] y empecemos.
 
 No necesitas ser perfecto. Solo necesitas empezar.
 Programemos con propósito. Construyamos con alma.
@@ -68,7 +68,6 @@ Hagámoslo.
 
 [Just the Docs]: https://just-the-docs.github.io/just-the-docs/
 [Jekyll]: https://jekyllrb.com
-[10 Días de Python con IA]: https://youtube.com/@10daysofpythonwithai?si=3wobcw1e11B7dlZI
+[10 Días de Python con IA]: https://youtube.com/@10diasdepythonconia?si=WBjCQ5O0CzIxm8Mg
 [Structural Wizard]: https://github.com/StructuralWizard/ 
-[**Día 1: Entiende tu código. Aventura en Python: 🧟‍♂️ Laberinto de Monstruos**]: https://structuralwizard.github.io/10DaysOfCode.github.io/docs/Day1/
-[10 Días de Python]: https://youtube.com/@10daysofpythonwithai?si=3wobcw1e11B7dlZI
+[**Día 1: Entiende tu código. Aventura en Python: 🧟‍♂️ Laberinto de Monstruos**]: https://structuralwizard.github.io/10DiasDePython_es.github.io/docs/Day1/

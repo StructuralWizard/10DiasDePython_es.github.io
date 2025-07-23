@@ -1,8 +1,10 @@
 # 10 Días de Código con IA
 
-Este repositorio contiene las notas del curso y los ejemplos de código del curso [10 Días de Python con IA]. El curso está dirigido a programadores curiosos de Vibe sin experiencia en programación que desean tener una visión holística de la codificación y las tecnologías de IA y las habilidades para depurar, especificar y examinar el código que se produce principalmente con IA.
+Este repositorio contiene las notas del curso y los ejemplos de código del curso [10 Días de Python con IA]. El curso está dirigido a programadores curiosos de Vibe sin experiencia en programación que desean obtener una visión global de programación con tecnologías de IA y las habilidades para depurar, especificar y examinar el código que se produce principalmente con IA.
 
-El curso está producido principalmente para usar [Visual Studio Code] y [Github Copilot]; y una gran parte de él usa python para automatización, llamadas a API, programación web, programación de IA y más.
+El curso ha sido creado en [Inglés] y traducido al [Español] y [Portugués]. 
+
+El curso está enfocado principalmente al uso de [Visual Studio Code] y [Github Copilot]; y una gran parte de él usa python para automatización, llamadas a API, programación web, programación de IA y más.
 
 Las notas del curso se pueden encontrar en [notas del curso 10 Días de Código con IA] y los ejemplos de código en [ejemplos de código de git hub]. Una vez que [Visual Studio Code] y [python] estén instalados en su máquina, puede ejecutar los ejemplos simplemente escribiendo en su terminal:
 
@@ -25,7 +27,7 @@ Si está en Windows y desea usar Bash en VS Code, puede instalar [Git para Windo
 
 Ahora, cuando abra una nueva terminal en VS Code, usará Bash.
 
-> **Nota:** La instalación de Git para Windows también instalará Git Bash. No necesita instalar Git por separado—Git Bash se incluye como parte del paquete de instalación de Git.
+> **Nota:** La instalación de Git para Windows también instalará Git Bash. No necesita instalar Git por separado. Git Bash se incluye como parte del paquete de instalación de Git.
 
 ### Crear un entorno virtual y activarlo
 Un **entorno virtual** en Python es un espacio de trabajo aislado que le permite instalar y administrar paquetes por separado de su instalación global de Python. Esto significa que cada proyecto puede tener sus propias dependencias, versiones y configuraciones sin interferir con otros proyectos o el Python del sistema.
@@ -79,7 +81,7 @@ Esto devolverá su terminal al entorno global de Python.
 Para clonar este repositorio en su máquina local, abra su terminal y ejecute:
 
 ```bash
-git clone https://github.com/StructuralWizard/10DaysOfCode.github.io.git
+git clone https://github.com/StructuralWizard/10DiasDePython_es.github.io.git
 ```
 
 Esto creará una copia local del repositorio en su directorio actual.
@@ -122,7 +124,10 @@ Nota: Si está utilizando una versión de Jekyll inferior a 3.5.0, use la clave 
 [Just the Docs]: https://just-the-docs.github.io/just-the-docs/
 [GitHub Pages]: https://docs.github.com/en/pages
 [Bundler]: https://bundler.io
-[10 Days of Python with AI]: https://youtube.com/@10daysofpythonwithai?si=3wobcw1e11B7dlZI
+[10 Días de Python con IA]: https://youtube.com/@10diasdepythonconia?si=WBjCQ5O0CzIxm8Mg
 [Structural Wizard]: https://github.com/StructuralWizard/ 
-[10 Days of Code with AI course notes]: https://structuralwizard.github.io/10DaysOfCode.github.io/
-[git hub code examples]: https://github.com/StructuralWizard/10DaysOfCode.github.io/tree/main/_python_code
+[notas del curso 10 Días de Código con IA]: https://structuralwizard.github.io/10DiasDePython_es.github.io/
+[ejemplos de código de git hub]: https://github.com/StructuralWizard/10DiasDePython_es.github.io/tree/main/_python_code
+[Inglés]: https://structuralwizard.github.io/10DaysOfCode.github.io/
+[Español]: https://structuralwizard.github.io/10DiasDePython_es.github.io/
+[Portugués]: https://structuralwizard.github.io/10DiasDePython_pt.github.io/
