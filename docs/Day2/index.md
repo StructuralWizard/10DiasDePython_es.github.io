@@ -54,8 +54,8 @@ Una **estructura de archivos** (también conocida como **estructura de directori
 Una ruta de archivo es la dirección a un archivo o carpeta en el ordenador. Hay dos tipos:
 1. Ruta Absoluta que apunta a la ubicación exacta desde la raíz y siempre comienza desde la unidad o el directorio raíz.
 ```python
-"C:/Users/Alberto/Desktop/mi_archivo.txt"  # Windows
-"/home/alberto/documents/mi_archivo.txt"   # Linux/macOS
+"C:/Users/structuralwizard/Desktop/mi_archivo.txt"  # Windows
+"/home/structuralwizard/documents/mi_archivo.txt"   # Linux/macOS
 ```
 1. Ruta Relativa que apunta a una ubicación relativa al directorio de trabajo actual.
 ```python

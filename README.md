@@ -62,7 +62,7 @@ Para activar el entorno virtual:
   ```
 - En macOS/Linux/terminal bash:
   ```bash
-  source venv/bin/activate
+  source .venv/bin/activate
   ```
 
 Una vez activado, puede instalar paquetes usando `pip` y estarán aislados en este entorno.

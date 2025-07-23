@@ -477,7 +477,7 @@ api_key = os.getenv("API_KEY")
 ```
 
 {: .warning}
-> NUNCA codifique secretos. Si confirma un secreto en GitHub:
+> NUNCA escriba secretos directamente en su código. Si confirma un secreto en GitHub:
 > 🔓 Cualquiera puede verlo,
 > 🤖 Los bots escanean constantemente los repositorios públicos en busca de secretos,
 > 💣 Los proveedores de API pueden revocar o abusar de las claves y

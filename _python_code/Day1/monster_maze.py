@@ -77,7 +77,7 @@ def game_loop(player):
     # Bucle while y formateo de cadenas con f-strings
     while True:
         choice = input("\n¿Quieres moverte a otra habitación? (sí/no): ").lower()
-        if choice in ["sí", "s"]:
+        if choice in ["sí", "si", "s"]:
             move_to_new_room(player)
             game_loop(player)  # Recursividad
             break
