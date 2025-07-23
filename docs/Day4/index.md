@@ -775,7 +775,7 @@ Cuando el UI está bien hecho, los usuarios ni lo notan—simplemente navegan fe
 UX trata sobre la **empatía**—diseñar pensando en el recorrido de tu usuario. Pregúntate: ¿Pueden los usuarios encontrar lo que necesitan fácilmente? ¿Pueden interactuar cómodamente en todos los dispositivos?
 
 - **Haz la navegación intuitiva**: Usa patrones familiares como barras de navegación superiores o menús tipo hamburguesa.
-- **Diseño responsivo**: Tu sitio debe verse bien en móviles, tabletas y ordenadores.
+- **Diseño diligente (responsive)**: Tu sitio debe verse bien en móviles, tabletas y ordenadores.
 - **Prueba temprano y seguido**: Obtén retroalimentación de usuarios reales. Observa cómo interactúan y mejora en base a su comportamiento—no a tus suposiciones.
 
 Piensa en UX como un andamiaje invisible—no es glamuroso, pero sostiene todo tu diseño.
@@ -789,26 +789,7 @@ Hoy aprendiste:
 - Cómo funciona Internet y los sitios web
 - Estructura y elementos de HTML
 - Estilizado con CSS y el modelo de caja
-- Cómo usar Bootstrap para un diseño rápido y responsivo
+- Cómo usar Bootstrap para un diseño rápido y diligente
 - Principios clave de diseño web para sitios hermosos y fáciles de usar
 
 **Próximos pasos:** ¡Intenta construir una página web simple usando HTML, dale estilo con CSS y experimenta con componentes de Bootstrap! Puedes acelerar tu diseño usando <a href="https://www.canva.com/" target="_blank">Canva</a>, que te permite diseñar un sitio web en tu navegador, publicarlo y luego ver su código.
-
-- **Diseño responsivo**: Tu sitio web debe verse genial en teléfonos, tabletas y computadoras de escritorio.
-- **Prueba temprano y seguido**: Obtén retroalimentación de usuarios reales. Observa cómo interactúan y mejora tu sitio en base a su comportamiento, no a tus suposiciones.
-
-Piensa en la UX como un andamiaje invisible: no es glamuroso, pero sostiene todo tu diseño
-
-
----
-
-## 🏁 Resumen<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
-
-Hoy aprendiste:
-- Cómo funciona Internet y los sitios web
-- Estructura y elementos de HTML
-- Estilizado con CSS y el modelo de caja
-- Cómo usar Bootstrap para un diseño rápido y responsivo
-- Principios clave de diseño web para sitios hermosos y fáciles de usar
-
-**Próximos pasos:** Intenta construir una página web simple usando HTML, dale estilo con CSS y experimenta con componentes de Bootstrap. ¡Puedes acelerar tu diseño usando <a href="https://www.canva.com/" target="_blank">Canva</a>, que te permite diseñar un sitio web en tu navegador, publicarlo y luego ver su código!
