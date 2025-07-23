@@ -605,7 +605,7 @@ Esto se puede visualizar en [Prueba web de html de W3Schools](https://www.w3scho
   </summary>
 Puede utilizar F12 o hacer clic derecho en inspeccionar para ver el código html de cada elemento.
 
-{% raw %}
+
 ```
 <html lang="es">
 <head>
@@ -993,7 +993,6 @@ Puede utilizar F12 o hacer clic derecho en inspeccionar para ver el código html
 </body>
 </html>
 ```
-{% endraw %}
 
 </details>
 
@@ -2065,9 +2064,9 @@ Puedes visualizar este código en [Prueba web de html de W3Schools](https://www.
 </details>
 
 
-### Markdown, Jekyll y Ruby<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
+## Markdown, Jekyll y Ruby<a href="#top" class="back-to-top-link" aria-label="Back to Top">↑</a>
 
-#### ¿Qué es Markdown?
+### ¿Qué es Markdown?
 
 Markdown es un lenguaje de marcado ligero para dar formato a texto usando una sintaxis de texto plano. Está diseñado para ser fácil de leer y escribir, y se utiliza ampliamente para documentación, archivos README y generadores de sitios estáticos.
 
@@ -2095,11 +2094,11 @@ Markdown es un lenguaje de marcado ligero para dar formato a texto usando una si
 
 Para una referencia completa, consulta la [Guía de Markdown](https://www.markdownguide.org/basic-syntax/).
 
-#### Jekyll y Ruby
+### Jekyll y Ruby
 
 [Jekyll](https://jekyllrb.com/) es un generador de sitios estáticos que convierte archivos Markdown en sitios web HTML. Es el motor detrás de GitHub Pages, lo que te permite publicar documentación o blogs directamente desde un repositorio de GitHub de forma gratuita. Jekyll está escrito en el lenguaje de programación Ruby.
 
-#### Este sitio web
+### Este sitio web
 
 Este sitio web está construido usando el tema [just-the-docs](https://just-the-docs.github.io/), que es un tema basado en Jekyll diseñado para sitios de documentación.
 
